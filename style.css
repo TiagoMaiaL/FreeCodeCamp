@@ -1,0 +1,179 @@
+
+@import url(https://fonts.googleapis.com/css?family=Oswald);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
+@import url(https://fonts.googleapis.com/css?family=Rokkitt:700);
+
+body {
+	color: white;
+	background-color: #000020;
+	font-family: 'Open Sans', sans-serif;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+a:hover {
+	color: #ff4646;
+}
+
+div.user-story a:hover {
+	color: #ff8686;
+}
+
+h1 {
+	margin: 20px 0px 30px 0px;
+	font-size: 80px;
+	font-family: 'Oswald', sans-serif;
+	right: 295px;
+	top: 30px;
+	cursor: pointer;
+}
+
+h1 span {
+	color: #ff4646;
+}
+
+h3 {
+	font-size: 28px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	line-height: 150%;
+	letter-spacing: 0.0625em;
+}
+
+div.container {
+	max-width: 650px;
+	width: 70%;
+	margin: 40px 0px 40px 10px;
+}
+
+div.user-story {
+	padding: 10px 20px 10px 20px;
+	margin-top: 30px;
+	background-color: #000030;
+}
+
+div.general {
+	position: relative;
+	max-width: 900px;
+	width: 100%;
+	margin: 0 auto;
+}
+
+div.fixed-wrapper {
+	max-width: 230px;
+	width: 30%;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+div.fixed-grid {
+	position: fixed;
+}
+
+div.fixed-grid h4 {
+	font-size: 30px;
+	margin-bottom: 20px;
+	font-family: 'Rokkitt', serif;
+	font-weight: 700;
+}
+
+div.fixed-grid p.meta {
+	margin: 40px 0px 40px 0px;
+	font-size: 20px;
+}
+
+div.meta-info {
+	margin-top: 200px;
+}
+
+div.media-info {
+	display: none;
+	margin-bottom: 20px;
+}
+
+div.media-info a {
+	font-family: 'Rokkitt', serif;
+	font-weight: 700;
+	font-size: 20px;
+}
+
+@media screen and ( max-width: 899px ) {
+
+	h1 {
+		font-size: 60px;
+		margin: 10px 0px 10px 0px;
+	}
+
+	h1 br {
+		display: none;
+	}
+
+	div.container {
+		width: 90%;
+		margin: 100px auto;
+	}
+
+	div.fixed-wrapper {
+		max-width: 100%;
+		width: 100%;
+		position: fixed;
+		left: 0;
+		background-color: black;
+	}
+
+	div.fixed-grid {
+		position: relative;
+		text-align: center;
+	}
+
+	div.fixed-grid header {
+		margin: 0 auto;
+	}
+
+	div.meta-info {
+		display: none;
+	}
+
+	div.user-story h3 {
+		font-size: 24px;
+	}
+
+	div.media-info {
+		display: inline-block;
+	}
+
+	div.media-info p {
+		float: left;
+		margin: 0px 10px 0px 10px;
+	}
+
+	div.media-info p:first-child {
+		margin-left: 5px;
+	}
+
+}
+
+@media screen and ( max-width: 480px ) {
+	
+	h1 {
+		font-size: 45px;
+	}
+
+	div.container {
+		margin: 80px auto;
+	}
+
+	div.user-story h3 {
+		font-size: 20px;
+	}
+
+	div.media-info p {
+		font-size: 15px;
+	}
+
+}

@@ -1,0 +1,13 @@
+
+<div class="user-story" >
+	<h3><a 
+		href="{{ story.link }}" 
+		target="_blank" >{{ story.headline }}</a></h3>
+
+	<div class="media-info">
+		<p><a href="{{ story.campUser }}" target="_blank">{{ story.author.username }}</a></p>
+		<p> | {{ story.rank }} | </p>
+		<p>{{ story.timePosted | date }}</p>
+	</div>
+</div>
+
