@@ -1,6 +1,6 @@
 (function() {
 
-	var app = angular.module( 
+	angular.module( 
 		'stories', [ 'story-modules' ]
 	);
 	

@@ -1,16 +1,16 @@
 (function() {
 	
-	var app = angular.module( 'story-modules', [] );
+	angular.module( 'story-modules', [] )
 
-	app.controller( 
+	.controller( 
 		'StoriesGridController', 
 		function( loadStoriesFactory ) {
 			var self 		= this;
 			this.stories 	= loadStoriesFactory.stories;
 			loadStoriesFactory.loadStories();
 		}
-	);
-	app.controller( 
+	)
+	.controller( 
 		'CamperInfoController', 
 		function( $scope, StateHolderFactory ) {
 			var self = this;
@@ -39,17 +39,17 @@
 				}
 			);
 		}
-	);
+	)
 
-	app.constant( 
+	.constant( 
 		'endpoint', 
 		'http://www.freecodecamp.com/news/hot' 
-	);
-	app.constant(
+	)
+	.constant(
 		'basePath',
 		'http://www.freecodecamp.com/'
-	);
-	app.factory( 
+	)
+	.factory( 
 		'loadStoriesFactory', 
 		function( endpoint, basePath, $http ) {
 
@@ -67,8 +67,8 @@
 				loadStories 	: loadStories
 			};
 		}
-	);
-	app.factory(
+	)
+	.factory(
 		'StateHolderFactory',
 		function( ) {
 			return {
@@ -88,9 +88,9 @@
 				}
 			};
 		}
-	);
+	)
 
-	app.directive( 
+	.directive( 
 		'storiesHeader', 
 		function( loadStoriesFactory ) {
 			return {
@@ -106,16 +106,16 @@
 				}
 			}
 		}
-	);
-	app.directive('storiesGrid', function() {
+	)
+	.directive('storiesGrid', function() {
 		return {
 			restrict		: 'E',
 			templateUrl		: 'stories-grid.html',
 			controller		: 'StoriesGridController',
 			controllerAs	: 'grid'
 		}
-	});
-	app.directive('storySingle', function( ) {
+	})
+	.directive('storySingle', function( ) {
 		return {
 			restrict		: 'E',
 			templateUrl		: 'story-single.html',
@@ -149,8 +149,8 @@
 				);
 			}
 		}
-	});
-	app.directive( 'camperSideInfo', function() {
+	})
+	.directive( 'camperSideInfo', function() {
 		return {
 			restrict 		: 'E',
 			templateUrl 	: 'story-side-info.html',
