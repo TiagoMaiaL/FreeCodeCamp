@@ -25,12 +25,15 @@
 			$scope.focusedStory = this.focusedStory;
 
 			this.updateStory = function( val ) {
-				this.focusedStory.username 	= val.author.username;
-				this.focusedStory.points 	= val.rank;
-				this.focusedStory.date 		= val.timePosted;
-				this.focusedStory.campUser 	= val.campUser;
-				this.hasData 				= true;
-				$scope.$apply();
+				$scope.$apply(
+					function() {
+						self.focusedStory.username 	= val.author.username;
+						self.focusedStory.points 	= val.rank;
+						self.focusedStory.date 		= val.timePosted;
+						self.focusedStory.campUser 	= val.campUser;
+						self.hasData 				= true;
+					}
+				);
 			}
 
 			StateHolderFactory.addCallback(
