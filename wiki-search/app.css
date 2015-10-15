@@ -31,6 +31,10 @@ p {
 	letter-spacing: 1px;
 }
 
+textarea:focus, input:focus{
+    outline: 0;
+}
+
 div.searchHolder {
 	position: relative;
 }
