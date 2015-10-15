@@ -1,0 +1,38 @@
+
+<div id="wikiResults">
+
+	<on-boarding ng-show="isOnboarding" class="boxAnimator"></on-boarding>
+
+	<!-- TODO: The loading box should be a directive. -->
+	<!-- We'll have an animation in it (Update of text at time intervals). -->
+	<div 
+		id="loadingWrapper"
+		class="wrapper boxAnimator"
+		ng-show="results.loadingResults">
+		<div 
+		id="loadingBox" 
+		class="loading box">
+			<div class="overlay">
+			</div>
+			<p>Loading...</p>
+		</div>
+	</div>
+	
+	<div id="articles">
+		<div 
+		class="single-animator"
+		ng-show="results.canDisplayArticles"
+		ng-repeat="single in results.articles">
+			<wiki-article></wiki-article>
+		</div>
+	</div>
+
+	<no-results 
+		class="boxAnimator empty"
+		ng-show="results.canDisplayEmpty"></no-results>
+
+	<wiki-error
+		class="boxAnimator error"
+		ng-show="results.errorOccurred" ></wiki-error>
+</div>
+
