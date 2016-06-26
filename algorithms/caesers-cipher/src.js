@@ -62,7 +62,7 @@ function Rot13() {
    * @param  {string} plainText
    * @return {string}
    */
-  this.decode = function (plainText) {
+  this.decode = function(plainText) {
 
     if (!stringIsValid(plainText)) {
       return null;
