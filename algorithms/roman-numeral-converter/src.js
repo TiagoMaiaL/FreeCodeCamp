@@ -79,23 +79,26 @@ function RomanConverter() {
   this.toRoman = function(number) {
     var romanNumeralText = '';
 
-    if (Math.floor(number / 1000) >= 1) {
-      romanNumeralText += this.romanNumerals[Math.floor(number / 1000) * 1000];
-      number = number % 1000;
+    var thousands = Math.floor(number / 1000);
+    if (thousands >= 1) {
+      romanNumeralText += this.romanNumerals[thousands * 1000];
+      number %= 1000;
     }
 
-    if (Math.floor(number / 100) >= 1) {
-      romanNumeralText += this.romanNumerals[Math.floor(number / 100) * 100];
-      number = number % 100;
+    var hundreds = Math.floor(number / 100);
+    if (hundreds >= 1) {
+      romanNumeralText += this.romanNumerals[hundreds * 100];
+      number %= 100;
     }
 
-    if (Math.floor(number / 10) >= 1) {
-      romanNumeralText += this.romanNumerals[Math.floor(number / 10) * 10];
-      number = number % 10;
+    var cents = Math.floor(number / 10); 
+    if (cents >= 1) {
+      romanNumeralText += this.romanNumerals[cents * 10];
+      number %= 10;
     }
 
     if (number <= 10) {
-      romanNumeralText += '' + this.romanNumerals[number];
+      romanNumeralText += this.romanNumerals[number];
       number = null;
     }
 
