@@ -53,7 +53,7 @@ describe('RomanConverter', function() {
   });
 
   it('returns XVI when the number 16 is sent', function() {
-    expect(convertToRoman(16)).toBe('XIV');
+    expect(convertToRoman(16)).toBe('XVI');
   });
 
   it('returns XIX when the number 19 is sent', function() {
@@ -65,7 +65,7 @@ describe('RomanConverter', function() {
   });
 
   it('returns XXIV when the number 29 is sent', function() {
-    expect(convertToRoman(29)).toBe('XXIV');
+    expect(convertToRoman(29)).toBe('XXIX');
   });
 
   it('returns XXX when the number 30 is sent', function() {
