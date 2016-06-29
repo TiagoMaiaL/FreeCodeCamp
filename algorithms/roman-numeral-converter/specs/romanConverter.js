@@ -164,4 +164,20 @@ describe('RomanConverter', function() {
     expect(convertToRoman(3999)).toBe('MMMCMXCIX');
   });
 
+  it('should forbid non integer values to be sent', function() {
+    expect(
+      function() {
+        convertToRoman('non-valid');
+      }
+    ).toThrow('Not a valid integer');
+  });
+
+  it('should forbid numbers greater than 4000.', function() {
+    expect(
+      function() {
+        convertToRoman(123123);
+      }
+    ).toThrow('Only values lower than 4000 can be converted.');
+  });
+
 });

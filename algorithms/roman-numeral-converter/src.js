@@ -112,8 +112,18 @@ function RomanConverter() {
    * @return {null}
    */
   function guardInteger(number) {
+    var message = 'Not a valid integer';
+
+    if (!parseInt(number)) {
+      throw message;
+    }
+
     if (number === 0 || number % 1 !== 0) {
-      throw 'Not a valid integer';
+      throw message;
+    }
+
+    if (number >= 4000) {
+      throw 'Only values lower than 4000 can be converted.';
     }
   }
 
