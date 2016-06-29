@@ -24,4 +24,28 @@ describe('SmallestCommonsFinder', function() {
     expect(smallestCommons([1, 13]).toBe(360360);
   });
 
+  it('should forbid non array parameters to be passed', function() {
+    expect(
+      function() {
+        smallestCommons(12);
+      }
+    ).toThrow('Only array is allowed as parameter.');
+  });
+
+  it('should forbid an array with more than two elements', function() {
+    expect(
+      function() {
+        smallestCommons([12, 13, 1]);
+      }
+    ).toThrow('Only arrays with two elements are allowed.');
+  });
+
+  it('should forbid an array with non integer elements', function() {
+    expect(
+      function() {
+        smallestCommons([12, 'test']);
+      }
+    ).toThrow('Only arrays with integers are allowed.');
+  });
+
 });
