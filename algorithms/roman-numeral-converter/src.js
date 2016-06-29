@@ -28,7 +28,6 @@ function RomanConverter() {
    * @type {Object}
    */
   this.romanNumerals = {
-    // TODO: Add the roman numerals here.
     0 : '',
     1 : 'I',
     2 : 'II',
@@ -111,7 +110,6 @@ function RomanConverter() {
    */
   function guardInteger(number) {
     if (number === 0 || number % 1 !== 0) {
-      console.log(number);
       throw 'Not a valid integer';
     }
   }
