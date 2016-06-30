@@ -13,15 +13,15 @@ describe('SmallestCommonsFinder', function() {
   });
 
   it('returns 60 when [1, 5] array is passed', function() {
-    expect(smallestCommons([1, 5]).toBe(60);
+    expect(smallestCommons([1, 5])).toBe(60);
   });
 
   it('returns 60 when [5, 1] inverted array is passed', function() {
-    expect(smallestCommons([5, 1]).toBe(60);
+    expect(smallestCommons([5, 1])).toBe(60);
   });
 
   it('returns 360360 when [1, 13] array is passed', function() {
-    expect(smallestCommons([1, 13]).toBe(360360);
+    expect(smallestCommons([1, 13])).toBe(360360);
   });
 
   it('should forbid non array parameters to be passed', function() {
@@ -29,7 +29,7 @@ describe('SmallestCommonsFinder', function() {
       function() {
         smallestCommons(12);
       }
-    ).toThrow('Only array is allowed as parameter.');
+    ).toThrow('Only arrays are allowed as parameters.');
   });
 
   it('should forbid an array with more than two elements', function() {
