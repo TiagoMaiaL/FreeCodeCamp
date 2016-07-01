@@ -75,12 +75,12 @@ function SmallestCommonsFinder() {
    * @return {Array}
    */
   var getFullInterval = function(firstNumber, lastNumber) {
-    var greaterNumber = Math.max(firstNumber, lastNumber);
+    var greatestNumber = Math.max(firstNumber, lastNumber);
     var smallestNumber = Math.min(firstNumber, lastNumber);
 
     var middleNumbers = [];
 
-    for (var i = smallestNumber; i <= greaterNumber; i++) {
+    for (var i = smallestNumber; i <= greatestNumber; i++) {
       middleNumbers.push(i);
     };
 
