@@ -1,29 +1,45 @@
 
+/* Fonts */
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,400italic);
+@import url(https://fonts.googleapis.com/css?family=Slabo+27px);
+
+/* General style */
+
 body {
-    background-color: white;    
+    background-color: white;
+    font-family: 'Slabo 27px', serif;
 }
 
 div.content {
     margin: auto;
-    width: 60%;
+    width: 50%;
 }
 
 div.image-container {
     margin: auto;
-    width: 80%;
+    width: 100%;
 }
 
 div.image-container img {
     display: block;
     margin: auto;
-    max-width: 70%;
+    max-width: 100%;
     height: auto;
 }
 
-h1 {
+h1, h2 {
     text-align: center;
-    font-size: 50px;
     margin: 20px 0px;
+
+}
+
+h1 {
+    font-size: 60px;
+}
+
+h2 {
+    font-size: 30px;
 }
 
 p, blockquote {
@@ -38,3 +54,12 @@ ul {
 li {
     margin-top: 2px;
 }
+
+strong, em, a, cite {
+    color: #4D8A9E;
+}
+
+em, cite {
+    font-style: italic;
+}
+
