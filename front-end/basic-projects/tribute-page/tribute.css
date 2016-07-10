@@ -31,11 +31,10 @@ div.image-container img {
 h1, h2 {
     text-align: center;
     margin: 20px 0px;
-
 }
 
 h1 {
-    font-size: 60px;
+    font-size: 50px;
 }
 
 h2 {
@@ -63,3 +62,40 @@ em, cite {
     font-style: italic;
 }
 
+/* media queries */
+
+@media (max-width:961px) {
+    h1 {
+        font-size: 45px;
+    }
+
+    div.content {
+        width: 65%;
+    }
+}
+
+@media (max-width:641px) {
+    h1 {
+        font-size: 40px;
+    }
+
+    div.content {
+        width: 75%;
+    }
+}
+
+@media (max-width:481px) {
+    h1 {
+        font-size: 35px;
+    }
+
+    div.content {
+        width: 80%;
+    }
+}
+
+@media (max-width:320px) {
+    div.content {
+        width: 90%;
+    }
+}
