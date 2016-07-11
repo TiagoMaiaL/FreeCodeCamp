@@ -1,3 +1,11 @@
+/**
+ * Free Code Camp
+ *
+ * Advanced Front-End Projects.
+ *
+ * Simon game solution.
+ * https://www.freecodecamp.com/challenges/build-a-simon-game
+ */
 
 /**
  * Bootstrap
@@ -20,7 +28,7 @@ $(document).ready(function() {
  * Object responsible for controlling
  * main game events and actions.
  */
-function SimonController() {
+function SimonGame() {
 
   /**
    * Number of colors in the current sequence.
@@ -39,7 +47,7 @@ function SimonController() {
    * @return void
    */
   this.start = function() {
-    
+
   }
 
   /**
