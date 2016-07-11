@@ -1,0 +1,18 @@
+{
+  "name": "simon",
+  "homepage": "https://github.com/TiagoMaiaL/FreeCodeCamp",
+  "authors": [
+    "Tiago Maia Lopes <tiago.maia@adjetiva.com.br>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
