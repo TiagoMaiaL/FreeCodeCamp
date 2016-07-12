@@ -17,6 +17,8 @@ describe('SequenceHandler', function() {
 
   it('should generate a color object', function() {
     expect(handler.getRandomColor()).toEqual(jasmine.any(Color));
+
+    // TODO: Improve this test.
   });
 
   it('should append a color to the passed sequence', function() {

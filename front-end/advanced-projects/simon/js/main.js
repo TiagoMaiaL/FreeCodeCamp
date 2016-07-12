@@ -11,18 +11,21 @@
  * Bootstrap
  * @return void
  */
-$(document).ready(function() {
 
-  /**
-   * Game control handler.
-   */
-  $('#game-control').on('click', function() {
-    // TODO: Instantiate a simon controller instance
-    // TODO: Check whether the instance exists before instantiating
-    // TODO: Start the game.
-  });
+// TODO: Uncomment this later on.
 
-});
+// $(document).ready(function() {
+
+//   /**
+//    * Game control handler.
+//    */
+//   $('#game-control').on('click', function() {
+//     // TODO: Instantiate a simon controller instance
+//     // TODO: Check whether the instance exists before instantiating
+//     // TODO: Start the game.
+//   });
+
+// });
 
 /**
  * Object responsible for controlling
@@ -72,8 +75,42 @@ function ControlHandler() {
  * Object responsible for controlling
  * the sequence of the game
  */
-function SenquenceHandler() {
-  // ...
+function SequenceHandler() {
+
+  /**
+   * Generates a random color.
+   * @return Color
+   */
+  this.getRandomColor = function() {
+    return new Color();
+  }
+
+  /**
+   * Adds a random color to the passed sequence.
+   * @param Sequence sequence
+   * @throws Exception If sequence is not a Sequence
+   * @returns Sequence
+   */
+  this.addNextColor = function(sequence) {
+    guardSequence(sequence);
+    return sequence.push(this.getRandomColor());
+  }
+
+  /**
+   * Validates the sequence
+   * @param  Sequence sequence
+   * @throws Exception If Sequence is not a sequence
+   * @return void
+   */
+  function guardSequence(sequence) {
+    if (sequence == null || sequence === false) {
+      throw 'Invalid sequence passed as parameter';
+    }
+
+    if (!(sequence instanceof Sequence)) {
+      throw 'Invalid sequence passed as parameter';
+    }
+  }
 }
 
 /**
@@ -87,7 +124,39 @@ function SequencePresenter() {
  * Object representing a sequence of colors.
  */
 function Sequence() {
-  // ...
+
+  /**
+   * The sequence items.
+   * @type Array
+   */
+  var items = [];
+
+  /**
+   * Returns the element at the specified index.
+   * @param Integer index
+   * @return Object
+   */
+  this.getElement = function(index) {
+    return items[index];
+  }
+
+  /**
+   * Pushes a new element into the array.
+   * @param element
+   * @return Array
+   */
+  this.push = function(element) {
+    items.push(element);
+    return this;
+  }
+
+  /**
+   * Returns the count of the current sequence.
+   * @return Integer
+   */
+  this.count = function() {
+    return items.length;
+  }
 }
 
 /**
