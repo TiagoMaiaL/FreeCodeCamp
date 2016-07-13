@@ -9,6 +9,9 @@
 
 describe('Color', function() {
 
+  // TODO: Allow null values to be passed.
+  // If a non null value is passed, validate.
+
   /**
    * Convenience method for getting a color object.
    * @param  String name

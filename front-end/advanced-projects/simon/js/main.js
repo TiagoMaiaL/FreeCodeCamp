@@ -83,7 +83,16 @@ function SequenceHandler() {
    * @return Color
    */
   this.getRandomColor = function() {
-    return new Color();
+    // TODO: DRY
+    var possibleColors = [
+      'red',
+      'yellow',
+      'green',
+      'blue'
+    ];
+    randomNumber = Math.floor(Math.random() * 4) + 1;
+
+    return new Color(possibleColors[randomNumber]);
   }
 
   /**
