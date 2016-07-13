@@ -83,10 +83,10 @@ function SequenceHandler() {
    * @return Color
    */
   this.getRandomColor = function() {
-    randomNumber = Math.floor(Math.random() * 4) + 1;
+    var randomIndex = Math.floor(Math.random() * 4) + 1;
 
     var color = new Color();
-    color.setName(color.possibleColors[randomNumber]);
+    color.setName(color.possibleColors[randomIndex]);
 
     return color;
   }
