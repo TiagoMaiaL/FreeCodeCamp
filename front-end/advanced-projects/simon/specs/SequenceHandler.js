@@ -23,7 +23,7 @@ describe('SequenceHandler', function() {
       'blue'
     ];
 
-    expect(validColors).toContain(handler.getRandomColor().name);    
+    expect(validColors).toContain(handler.getRandomColor().getName());
   });
 
   it('should append a color to the passed sequence', function() {

@@ -22,7 +22,7 @@ describe('Color', function() {
   }
 
   it('should receive the name while instantiating', function() {
-    expect(colorFactory('yellow').name).toBe('yellow');
+    expect(colorFactory('yellow').getName()).toBe('yellow');
   });
 
   it('should forbid an invalid color name to be passed', function() {
@@ -34,10 +34,6 @@ describe('Color', function() {
   it('should forbid non string values to be passed', function() {
 
     var message = 'Color name should be a string.';
-
-    expect(function() {
-      colorFactory(null);
-    }).toThrow(message);
 
     expect(function() {
       colorFactory(1);

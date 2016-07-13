@@ -83,16 +83,12 @@ function SequenceHandler() {
    * @return Color
    */
   this.getRandomColor = function() {
-    // TODO: DRY
-    var possibleColors = [
-      'red',
-      'yellow',
-      'green',
-      'blue'
-    ];
     randomNumber = Math.floor(Math.random() * 4) + 1;
 
-    return new Color(possibleColors[randomNumber]);
+    var color = new Color();
+    color.setName(color.possibleColors[randomNumber]);
+
+    return color;
   }
 
   /**
@@ -194,12 +190,22 @@ function Color(name) {
   ];
 
   /**
+   * The color name
+   * @type String
+   */
+  var colorName = null;
+
+  /**
    * Validates the name passed through the constructor.
    * @param  String colorName
    * @throws Exception If colorName is not a string or invalid
    * @return void
    */
   this.guardName = function(colorName) {
+    if (colorName == null) {
+      return;
+    }
+
     if (typeof colorName != 'string') {
       throw 'Color name should be a string.';
     }
@@ -210,11 +216,22 @@ function Color(name) {
   }
 
   /**
-   * The color name
-   * @type String
+   * Sets the color name.
+   * @param String colorName
+   * @return void
    */
-  this.name = null;
+  this.setName = function(name) {
+    this.guardName(name);
+    colorName = name;
+  }
 
-  this.guardName(name);
-  this.name = name;
+  /**
+   * Gets the internal name.
+   * @return String
+   */
+  this.getName = function() {
+    return colorName;
+  }
+
+  this.setName(name);
 }
