@@ -16,15 +16,22 @@ describe('SequenceHandler', function() {
   });
 
   it('should generate a color object', function() {
-    expect(handler.getRandomColor()).toEqual(jasmine.any(Color));
+    var validColors = [
+      'red',
+      'yellow',
+      'green',
+      'blue'
+    ];
 
-    // TODO: Improve this test.
+    expect(validColors).toContain(handler.getRandomColor().name);
+
+    
   });
 
   it('should append a color to the passed sequence', function() {
     var sequence = handler.addNextColor(new Sequence());
     expect(sequence.count()).toBe(1);
-    expect(sequence.getElement(1)).toEqual(jasmine.any(Color));
+    expect(sequence.getElement(0)).toEqual(jasmine.any(Color));
   });
 
   it('should deny non sequence values passed as parameter', function() {

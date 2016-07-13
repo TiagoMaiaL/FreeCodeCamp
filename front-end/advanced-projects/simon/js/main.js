@@ -75,6 +75,7 @@ function ControlHandler() {
  * Object responsible for controlling
  * the sequence of the game
  */
+// TODO: Refactor those names.
 function SequenceHandler() {
 
   /**
@@ -86,14 +87,15 @@ function SequenceHandler() {
   }
 
   /**
-   * Adds a random color to the passed sequence.
-   * @param Sequence sequence
+   * Adds a random color to the passed colors sequence.
+   * @param Sequence colors
    * @throws Exception If sequence is not a Sequence
    * @returns Sequence
    */
-  this.addNextColor = function(sequence) {
-    guardSequence(sequence);
-    return sequence.push(this.getRandomColor());
+  this.addNextColor = function(colors) {
+    guardSequence(colors);
+    colors.push(this.getRandomColor());
+    return colors;
   }
 
   /**
@@ -132,6 +134,14 @@ function Sequence() {
   var items = [];
 
   /**
+   * Returns the items kept by the sequence object.
+   * @return Array
+   */
+  this.getItems = function() {
+    return items;
+  }
+
+  /**
    * Returns the element at the specified index.
    * @param Integer index
    * @return Object
@@ -143,11 +153,10 @@ function Sequence() {
   /**
    * Pushes a new element into the array.
    * @param element
-   * @return Array
+   * @return void
    */
   this.push = function(element) {
     items.push(element);
-    return this;
   }
 
   /**
@@ -162,6 +171,23 @@ function Sequence() {
 /**
  * Object representing a given color.
  */
-function Color() {
-  // ...
+function Color(name) {
+
+  /**
+   * List of possible colors in simon game.
+   * @type Array
+   */
+  this.possibleColors = [
+    'red',
+    'yellow',
+    'green',
+    'blue'
+  ];
+  
+  /**
+   * The color name
+   * @type String
+   */
+  this.name = name
+
 }
