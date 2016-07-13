@@ -183,11 +183,29 @@ function Color(name) {
     'green',
     'blue'
   ];
-  
+
+  /**
+   * Validates the name passed through the constructor.
+   * @param  String colorName
+   * @throws Exception If colorName is not a string or invalid
+   * @return void
+   */
+  this.guardName = function(colorName) {
+    if (typeof colorName != 'string') {
+      throw 'Color name should be a string.';
+    }
+
+    if (this.possibleColors.indexOf(colorName) < 0) {
+      throw 'Invalid color name passed as arguemnt.';
+    }
+  }
+
   /**
    * The color name
    * @type String
    */
-  this.name = name
+  this.name = null;
 
+  this.guardName(name);
+  this.name = name;
 }
