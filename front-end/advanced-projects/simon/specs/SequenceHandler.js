@@ -16,12 +16,7 @@ describe('SequenceHandler', function() {
   });
 
   it('should generate a color object', function() {
-    var validColors = [
-      'red',
-      'yellow',
-      'green',
-      'blue'
-    ];
+    var validColors = (new Color()).possibleColors;
 
     expect(validColors).toContain(handler.getRandomColor().getName());
   });
