@@ -107,5 +107,15 @@ describe('Sequence', function() {
         sequenceFactory(new Object())
     }).toThrow('Invalid array passed to sequence.');
   });
+
+  it('should return a sequence specified in a rande', function() {
+    expect(sequenceFactory([1, 2, 3, 4]).getRange(0, 1)).toEqual([1, 2]);
+  });
+
+  it('should throw out of bounds', function() {
+    expect(function() {
+      sequenceFactory([1, 2]).getRange(0, 4);
+    }).toThrow('The passed range is out of bounds.');
+  });
   
 });
