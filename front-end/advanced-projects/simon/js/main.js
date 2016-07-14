@@ -189,6 +189,24 @@ function Sequence(externalItems) {
   }
 
   /**
+   * Returns the Sequence's range.
+   * @param  Integer start
+   * @param  Integer offset
+   * @return Sequence
+   */
+  this.getRange = function(start, offset) {
+    if (typeof items[start] === 'undefined') {
+      throw 'The passed range is out of bounds.';
+    }
+
+    if (offset > this.count()) {
+      throw 'The passed range is out of bounds.';
+    }
+
+    return new Sequence(items.slice(start, offset + 1));
+  }
+
+  /**
    * validates the passed items array.
    * @param  Array items
    * @throws Exception If items is not a valid array
