@@ -73,9 +73,11 @@ function ControlHandler() {
 /**
  * Object responsible for controlling
  * the sequence of the game
+ *
+ * @param Sequence sequence
  */
 // TODO: Refactor those names.
-function SequenceHandler() {
+function SequenceHandler(sequence) {
 
   /**
    * The game sequence of colors.
@@ -103,10 +105,32 @@ function SequenceHandler() {
    * @throws Exception If sequence is not a Sequence
    * @returns Sequence
    */
-  this.addNextColor = function(colors) {
-    guardSequence(colors);
-    colors.push(this.getRandomColor());
-    return colors;
+  this.addRandomColor = function() {
+    gameSequence.push(this.getRandomColor());
+    return gameSequence;
+  }
+
+  /**
+   * Returns the game sequence
+   * @return Sequence
+   */
+  this.getSequence = function() {
+    return gameSequence;
+  }
+
+  /**
+   * Sets the handler sequence.
+   * @param Sequence sequence
+   */
+  this.setSequence = function(sequence) {
+    guardSequence(sequence);
+
+    if (sequence === null || sequence === undefined)  {
+      gameSequence = new Sequence();
+      return;
+    }
+
+    gameSequence = sequence;
   }
 
   /**
@@ -116,14 +140,16 @@ function SequenceHandler() {
    * @return void
    */
   function guardSequence(sequence) {
-    if (sequence == null || sequence === false) {
-      throw 'Invalid sequence passed as parameter';
+    if (sequence == false || sequence == null) {
+      return;
     }
 
     if (!(sequence instanceof Sequence)) {
       throw 'Invalid sequence passed as parameter';
     }
   }
+
+  this.setSequence(sequence);
 }
 
 /**

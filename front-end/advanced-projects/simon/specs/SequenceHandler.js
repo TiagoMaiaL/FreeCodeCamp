@@ -15,22 +15,24 @@ describe('SequenceHandler', function() {
     handler = new SequenceHandler();
   });
 
+  it('should come with a empty sequence if no one is passed', function() {
+    expect(handler.getSequence().count()).toBe(0);
+  });
+
+  it('should validate the passed sequence to the constructor', function() {
+    var handler = new SequenceHandler(new Sequence([1]));
+    expect(handler.getSequence().count()).toBe(1);
+  });
+
   it('should generate a color object', function() {
     var validColors = (new Color()).possibleColors;
-
     expect(validColors).toContain(handler.getRandomColor().getName());
   });
 
-  it('should append a color to the passed sequence', function() {
-    var sequence = handler.addNextColor(new Sequence());
+  it('should append a color to the game sequence', function() {
+    var sequence = handler.addRandomColor();
     expect(sequence.count()).toBe(1);
     expect(sequence.getElement(0)).toEqual(jasmine.any(Color));
-  });
-
-  it('should deny non sequence values passed as parameter', function() {
-    expect(function() {
-      handler.addNextColor(null);
-    }).toThrow('Invalid sequence passed as parameter');
   });
 
 });
