@@ -15,11 +15,11 @@ describe('Sequence', function() {
    * @return Sequence
    */
   function sequenceFactory(items) {
-    return new Sequence(array);
+    return new Sequence(items);
   }
 
   it('should get an array as items', function() {
-    expect(sequenceFactory([1, 2, 3]).getItems()).toBe([1, 2, 3]);
+    expect(sequenceFactory([1, 2, 3]).getItems()).toEqual([1, 2, 3]);
   });
 
   it('should return the sencond element', function() {
@@ -39,6 +39,24 @@ describe('Sequence', function() {
     var secondSequence = sequenceFactory([1, 2, 3]);
 
     expect(firstSequence.equals(secondSequence)).toBeTruthy();
+  });
+
+  it('should not accept a value other than an array', function() {
+    expect(function() {
+        sequenceFactory(1)
+    }).toThrow('Invalid array passed to sequence.');
+
+    expect(function() {
+        sequenceFactory(false)
+    }).toThrow('Invalid array passed to sequence.');
+
+    expect(function() {
+        sequenceFactory("string")
+    }).toThrow('Invalid array passed to sequence.');
+
+    expect(function() {
+        sequenceFactory(new Object())
+    }).toThrow('Invalid array passed to sequence.');
   });
   
 });

@@ -82,8 +82,9 @@ function SequenceHandler() {
    * Generates a random color.
    * @return Color
    */
+   // TODO: Refactor the place of the below function.
   this.getRandomColor = function() {
-    var randomIndex = Math.floor(Math.random() * 4) + 1;
+    var randomIndex = Math.floor(Math.random() * 4);
 
     var color = new Color();
     color.setName(color.possibleColors[randomIndex]);
@@ -129,14 +130,15 @@ function SequencePresenter() {
 
 /**
  * Object representing a sequence of colors.
+ * @param Array items
  */
-function Sequence() {
+function Sequence(externalItems) {
 
   /**
    * The sequence items.
    * @type Array
    */
-  var items = [];
+  var items = null;
 
   /**
    * Returns the items kept by the sequence object.
@@ -162,6 +164,7 @@ function Sequence() {
    */
   this.push = function(element) {
     items.push(element);
+    return this;
   }
 
   /**
@@ -171,6 +174,48 @@ function Sequence() {
   this.count = function() {
     return items.length;
   }
+
+  /**
+   * Checks if the current sequence is 
+   * equals to the passed one.
+   * @param  Sequence sequence
+   * @return Boolean
+   */
+  this.equals = function(sequence) {
+    var haveSameCount = this.count() == sequence.count(); 
+
+    return haveSameCount && items.every(function(currentItem, index) {
+      return currentItem === sequence.getElement(index);
+    });
+  }
+
+  /**
+   * validates the passed items array.
+   * @param  Array items
+   * @throws Exception If items is not a valid array
+   */
+  this.guardItems = function(items) {
+    if (!(items instanceof Array)) {
+      throw 'Invalid array passed to sequence.';
+    }
+  }
+
+  /**
+   * Sets the internal items array.
+   * @param Array items
+   * @return void
+   */
+  this.setItems = function(externalItems) {
+    if (externalItems === null || externalItems === undefined) {
+      items = [];
+      return;
+    }
+
+    this.guardItems(externalItems);
+    items = externalItems;
+  }
+
+  this.setItems(externalItems);
 }
 
 /**
