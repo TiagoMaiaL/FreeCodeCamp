@@ -114,6 +114,12 @@ describe('Sequence', function() {
     ).toEqual([1, 2]);
   });
 
+  it('should get the range when the offset is the last index', function() {
+    expect(
+      sequenceFactory([1, 2, 3]).getRange(0, 3).getItems()
+    ).toEqual([1, 2, 3]);
+  });
+
   it('should throw out of bounds', function() {
     expect(function() {
       sequenceFactory([1, 2]).getRange(0, 4);
