@@ -50,7 +50,8 @@ describe('Sequence', function() {
     expect(firstSequence.equals(secondSequence)).toBeTruthy();
   });
 
-  it('should compare different sequences with Color objects', function() {
+  // TODO: Refactor this later on. DRY
+  it('should compare equal sequences with Color objects', function() {
     var colors = [
       colorFactory('blue'),
       colorFactory('yellow')
@@ -63,6 +64,21 @@ describe('Sequence', function() {
     var secondSequence = sequenceFactory(secondColors);
 
     expect(firstSequence.equals(secondSequence)).toBeTruthy();
+  });
+
+  it('should compare different sequences with Colors', function() {
+    var colors = [
+      colorFactory('blue'),
+      colorFactory('yellow')
+    ];
+    var secondColors = [
+      colorFactory('green'),
+      colorFactory('red')
+    ];
+    var firstSequence = sequenceFactory(colors);
+    var secondSequence = sequenceFactory(secondColors);
+
+    expect(firstSequence.equals(secondSequence)).toBeFalsy();
   });
 
   it('should deny comparing objects without an equals function', function() {
