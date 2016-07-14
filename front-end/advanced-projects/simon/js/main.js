@@ -78,6 +78,12 @@ function ControlHandler() {
 function SequenceHandler() {
 
   /**
+   * The game sequence of colors.
+   * @type Sequence
+   */
+  var gameSequence = null;
+
+  /**
    * Generates a random color.
    * @return Color
    */

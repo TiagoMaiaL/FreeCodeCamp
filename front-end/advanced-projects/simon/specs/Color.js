@@ -55,7 +55,7 @@ describe('Color', function() {
     expect(firstColor.equals(secondColor)).toBeTruthy();
   });
 
-  it('should forbit comparisions with non Color values', function() {
+  it('should forbid comparisions with non Color values', function() {
     expect(function() {
       colorFactory('yellow').equals(null);
     }).toThrow('Comparision allowed only between colors.');
