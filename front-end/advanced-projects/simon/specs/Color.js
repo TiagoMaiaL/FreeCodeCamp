@@ -41,4 +41,24 @@ describe('Color', function() {
     }).toThrow(message);
   });
 
+  it('should compare itself to a different Color', function() {
+    var firstColor = colorFactory('blue');
+    var secondColor = colorFactory('green');
+
+    expect(firstColor.equals(secondColor)).toBeFalsy();
+  });
+
+  it('should compare itself to an equal color', function() {
+    var firstColor = colorFactory('blue');
+    var secondColor = colorFactory('blue');
+
+    expect(firstColor.equals(secondColor)).toBeTruthy();
+  });
+
+  it('should forbit comparisions with non Color values', function() {
+    expect(function() {
+      colorFactory('yellow').equals(null);
+    }).toThrow('Comparision allowed only between colors.');
+  });
+
 });

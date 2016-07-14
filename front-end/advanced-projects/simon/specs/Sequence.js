@@ -18,6 +18,15 @@ describe('Sequence', function() {
     return new Sequence(items);
   }
 
+  /**
+   * Convenience method for getting a Sequence object.
+   * @param  Array items
+   * @return Sequence
+   */
+  function colorFactory(name) {
+    return new Color(name);
+  }
+
   it('should get an array as items', function() {
     expect(sequenceFactory([1, 2, 3]).getItems()).toEqual([1, 2, 3]);
   });
@@ -37,6 +46,21 @@ describe('Sequence', function() {
   it('should compare two different sequences', function() {
     var firstSequence = sequenceFactory([1, 2, 3]);
     var secondSequence = sequenceFactory([1, 2, 3]);
+
+    expect(firstSequence.equals(secondSequence)).toBeTruthy();
+  });
+
+  it('should compare different sequences with Color objects', function() {
+    var colors = [
+      colorFactory('blue'),
+      colorFactory('yellow')
+    ];
+    var secondColors = [
+      colorFactory('blue'),
+      colorFactory('yellow')
+    ];
+    var firstSequence = sequenceFactory(colors);
+    var secondSequence = sequenceFactory(secondColors);
 
     expect(firstSequence.equals(secondSequence)).toBeTruthy();
   });

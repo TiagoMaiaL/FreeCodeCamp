@@ -11,7 +11,6 @@
  * Bootstrap
  * @return void
  */
-
 // TODO: Uncomment this later on.
 
 // $(document).ready(function() {
@@ -185,7 +184,13 @@ function Sequence(externalItems) {
     var haveSameCount = this.count() == sequence.count(); 
 
     return haveSameCount && items.every(function(currentItem, index) {
-      return currentItem === sequence.getElement(index);
+      var sequenceItem = sequence.getElement(index);
+
+      if (typeof currentItem == 'object') {
+        return currentItem.equals(sequenceItem);
+      }
+
+      return currentItem === sequenceItem;
     });
   }
 
@@ -239,6 +244,19 @@ function Color(name) {
    * @type String
    */
   var colorName = null;
+
+  /**
+   * Checks if the color object is equals to this
+   * @param  Color color
+   * @return Boolean
+   */
+  this.equals = function(color) {
+    if (!(color instanceof Color)) {
+      throw 'Comparision allowed only between colors.';
+    }
+
+    return color.getName() == this.getName();
+  }
 
   /**
    * Validates the name passed through the constructor.
