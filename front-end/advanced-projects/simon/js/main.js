@@ -184,13 +184,7 @@ function Sequence(externalItems) {
     var haveSameCount = this.count() == sequence.count(); 
 
     return haveSameCount && items.every(function(currentItem, index) {
-      var sequenceItem = sequence.getElement(index);
-
-      if (typeof currentItem == 'object') {
-        return currentItem.equals(sequenceItem);
-      }
-
-      return currentItem === sequenceItem;
+      return compareItems(currentItem, sequence.getElement(index));
     });
   }
 
@@ -218,6 +212,35 @@ function Sequence(externalItems) {
 
     this.guardItems(externalItems);
     items = externalItems;
+  }
+
+  /**
+   * Compares the two given values
+   * @param  first
+   * @param  second
+   * @return Boolean
+   */
+  var compareItems = function(first, second) {
+    if ((typeof first == 'object') && (typeof second == 'object')) {
+      guardComparisionObject(first);
+      guardComparisionObject(second);
+
+      return first.equals(second);
+    }
+
+    return first === second;
+  }
+
+  /**
+   * Checks if object implements equals()
+   * @param  Object object
+   * @throws Execption If object doesn't implement equals()
+   * @return void
+   */
+  var guardComparisionObject = function(object) {
+    if (typeof object.equals != 'function') {
+      throw 'The sequence objects must implement an equals() method.';
+    }
   }
 
   this.setItems(externalItems);

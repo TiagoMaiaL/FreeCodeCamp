@@ -65,6 +65,15 @@ describe('Sequence', function() {
     expect(firstSequence.equals(secondSequence)).toBeTruthy();
   });
 
+  it('should deny comparing objects without an equals function', function() {
+    var firstSequence = sequenceFactory([{}]);
+    var secondSequence = sequenceFactory([{}]);
+
+    expect(function() {
+        firstSequence.equals(secondSequence);
+    }).toThrow('The sequence objects must implement an equals() method.');
+  });
+
   it('should not accept a value other than an array', function() {
     expect(function() {
         sequenceFactory(1)
