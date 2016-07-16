@@ -134,6 +134,15 @@ function SequenceHandler(sequence) {
   }
 
   /**
+   * Compares the handler's sequence to the given one.
+   * @param  Sequence sequence
+   * @return Boolean
+   */
+  this.equals = function(sequence) {
+    return gameSequence.equals(sequence);
+  }
+
+  /**
    * Validates the sequence
    * @param  Sequence sequence
    * @throws Exception If Sequence is not a sequence
