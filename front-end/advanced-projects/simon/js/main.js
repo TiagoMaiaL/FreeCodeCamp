@@ -127,20 +127,20 @@ function Simon(sequence) {
  * Represents the user's sequence. 
  */
 // TODO: Redefine tests and this class to use Player instead of UserSequence.
-function PlayerSequence() {
+function Player() {
 
   /**
    * Player's Sequence object.
    * @type Sequence
    */
-  var playerSequence = new Sequence();
+  var sequence = new Sequence();
 
   /**
    * Returns the user's sequence.
    * @return Sequence
    */
   this.getSequence = function() {
-    return playerSequence;
+    return sequence;
   }
 
   /**
@@ -150,7 +150,7 @@ function PlayerSequence() {
    */
   this.addColor = function(color) {
     guardColor(color);
-    playerSequence.push(color);
+    sequence.push(color);
     return this;
   }
 
@@ -158,8 +158,8 @@ function PlayerSequence() {
    * Returns the count of the player's sequence.
    * @return Integer
    */
-  this.getCount = function() {
-    return playerSequence.count();
+  this.getColorsCount = function() {
+    return sequence.count();
   }
 
   // TODO: Use the already defined method for guarding colors in other objects.
