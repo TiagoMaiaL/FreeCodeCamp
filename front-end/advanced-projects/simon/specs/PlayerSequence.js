@@ -13,10 +13,6 @@ describe('PlayerSequence', function() {
     return new PlayerSequence(); 
   }
 
-  var sequenceHandlerFactory = function() {
-    return new SequenceHandler();
-  }
-
   it('should store the user color sequence', function() {
     expect(
       playerSequenceFactory().getSequence()

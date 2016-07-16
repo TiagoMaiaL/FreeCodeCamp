@@ -28,56 +28,11 @@
 
 /**
  * Object responsible for controlling
- * main game events and actions.
- */
-function SimonGame() {
-
-  /**
-   * Number of colors in the current sequence.
-   * @type Number
-   */
-  var sequenceCount = 0;
-
-  /**
-   * Current game sequence.
-   * @type SequenceHandler
-   */
-  var sequence = null;
-
-  /**
-   * Starts the game.
-   * @return void
-   */
-  this.start = function() {
-
-  }
-
-  /**
-   * Pauses the game.
-   * @return void
-   */
-  this.stop = function() {
-
-  }
-
-}
-
-/**
- * Object responsible for handling user
- * input through the game buttons.
- */
-function ControlHandler() {
-  // ...
-}
-
-/**
- * Object responsible for controlling
- * the sequence of the game
- *
+ * game events and actions.
  * @param Sequence sequence
  */
 // TODO: Refactor those names.
-function SequenceHandler(sequence) {
+function Simon(sequence) {
 
   /**
    * The game sequence of colors.
@@ -90,6 +45,7 @@ function SequenceHandler(sequence) {
    * @return Color
    */
    // TODO: Refactor the place of the below function.
+   // this should be within the Color object.
   this.getRandomColor = function() {
     var randomIndex = Math.floor(Math.random() * 4);
 
@@ -219,13 +175,6 @@ function PlayerSequence() {
     }
   }
 
-}
-
-/**
- * Object responsible for presenting a given sequence.
- */
-function SequencePresenter() {
-  // ...
 }
 
 /**
