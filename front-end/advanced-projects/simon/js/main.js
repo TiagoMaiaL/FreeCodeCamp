@@ -40,6 +40,20 @@ function Simon(sequence) {
   var gameSequence = null;
 
   /**
+   * Game's player
+   * @type Player
+   */
+  var player = new Player();
+
+  /**
+   * Returns the underlying player object.
+   * @return Player
+   */
+  this.getPlayer = function() {
+    return player;
+  }
+
+  /**
    * Adds a random color to the passed colors sequence.
    * @param Sequence colors
    * @throws Exception If sequence is not a Sequence

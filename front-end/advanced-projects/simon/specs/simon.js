@@ -61,4 +61,8 @@ describe('Simon', function() {
     ).toBeFalsy();
   });
 
+  it('should have a player', function() {
+    expect(game.getPlayer()).toEqual(jasmine.any(Player));
+  });
+
 });
