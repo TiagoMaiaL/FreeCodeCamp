@@ -153,6 +153,60 @@ function SequenceHandler(sequence) {
 }
 
 /**
+ * Represents the user's sequence. 
+ */
+// TODO: Redefine tests and this class to use Player instead of UserSequence.
+function PlayerSequence() {
+
+  /**
+   * Player's Sequence object.
+   * @type Sequence
+   */
+  var playerSequence = new Sequence();
+
+  /**
+   * Returns the user's sequence.
+   * @return Sequence
+   */
+  this.getSequence = function() {
+    return playerSequence;
+  }
+
+  /**
+   * Adds a color to the user's sequence
+   * @param Color color
+   * @return PlayerSequence
+   */
+  this.addColor = function(color) {
+    guardColor(color);
+    playerSequence.push(color);
+    return this;
+  }
+
+  /**
+   * Returns the count of the player's sequence.
+   * @return Integer
+   */
+  this.getCount = function() {
+    return playerSequence.count();
+  }
+
+  // TODO: Use the already defined method for guarding colors in other objects.
+  /**
+   * Validates the given color object.
+   * @param  Color color
+   * @throws Exception If color is not a valid color object.
+   * @return void
+   */
+  var guardColor = function(color) {
+    if (!(color instanceof Color)) {
+      throw 'Only colors can be added to the sequence.';
+    }
+  }
+
+}
+
+/**
  * Object responsible for presenting a given sequence.
  */
 function SequencePresenter() {

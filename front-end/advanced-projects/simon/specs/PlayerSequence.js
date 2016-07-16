@@ -10,7 +10,7 @@
 describe('PlayerSequence', function() {
 
   var playerSequenceFactory = function() {
-    return new UserSequence(); 
+    return new PlayerSequence(); 
   }
 
   var sequenceHandlerFactory = function() {
@@ -20,7 +20,7 @@ describe('PlayerSequence', function() {
   it('should store the user color sequence', function() {
     expect(
       playerSequenceFactory().getSequence()
-    ).toBe(jasmine.any(UserSequence));
+    ).toEqual(jasmine.any(Sequence));
   });
 
   it('should add a new color to the sequence', function() {
