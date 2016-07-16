@@ -24,16 +24,12 @@ describe('Simon', function() {
     expect(game.getSequence().count()).toBe(1);
   });
 
-  it('should generate a color object', function() {
-    var validColors = (new Color()).possibleColors;
-    // TODO: Refactor this call to getRandomColor. This should be within Color
-    expect(validColors).toContain(game.getRandomColor().getName());
-  });
-
   it('should append a color to the game sequence', function() {
+    var possibleColors = (new Color()).possibleColors;
     var sequence = game.addRandomColor();
     expect(sequence.count()).toBe(1);
     expect(sequence.getElement(0)).toEqual(jasmine.any(Color));
+    expect(possibleColors).toContain(sequence.getElement(0).getName());
   });
 
   it('should compare itself with the given sequence', function() {

@@ -40,28 +40,13 @@ function Simon(sequence) {
   var gameSequence = null;
 
   /**
-   * Generates a random color.
-   * @return Color
-   */
-   // TODO: Refactor the place of the below function.
-   // this should be within the Color object.
-  this.getRandomColor = function() {
-    var randomIndex = Math.floor(Math.random() * 4);
-
-    var color = new Color();
-    color.setName(color.possibleColors[randomIndex]);
-
-    return color;
-  }
-
-  /**
    * Adds a random color to the passed colors sequence.
    * @param Sequence colors
    * @throws Exception If sequence is not a Sequence
    * @returns Sequence
    */
   this.addRandomColor = function() {
-    gameSequence.push(this.getRandomColor());
+    gameSequence.push(getRandomColor());
     return gameSequence;
   }
 
@@ -101,6 +86,19 @@ function Simon(sequence) {
     }
 
     return handlerSequence.equals(sequence);
+  }
+
+  /**
+   * Generates a random color.
+   * @return Color
+   */
+  var getRandomColor = function() {
+    var randomIndex = Math.floor(Math.random() * 4);
+
+    var color = new Color();
+    color.setName(color.possibleColors[randomIndex]);
+
+    return color;
   }
 
   /**
@@ -160,7 +158,6 @@ function Player() {
     return sequence.count();
   }
 
-  // TODO: Use the already defined method for guarding colors in other objects.
   /**
    * Validates the given color object.
    * @param  Color color
