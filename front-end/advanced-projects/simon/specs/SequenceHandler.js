@@ -35,4 +35,13 @@ describe('SequenceHandler', function() {
     expect(sequence.getElement(0)).toEqual(jasmine.any(Color));
   });
 
+  it('should compare itself with the given sequence', function() {
+    handler.setSequence(
+      new Sequence([1, 2, 3])
+    );
+    expect(
+      handler.equals(new Sequence([1, 2, 3]))
+    ).toBeTruthy();
+  });
+
 });
