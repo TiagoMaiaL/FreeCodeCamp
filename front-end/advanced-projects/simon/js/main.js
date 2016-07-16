@@ -139,7 +139,13 @@ function SequenceHandler(sequence) {
    * @return Boolean
    */
   this.equals = function(sequence) {
-    return gameSequence.equals(sequence);
+    var handlerSequence = gameSequence;
+
+    if (sequence.count() < handlerSequence.count()) {
+      handlerSequence = handlerSequence.getRange(0, sequence.count() - 1);
+    }
+
+    return handlerSequence.equals(sequence);
   }
 
   /**

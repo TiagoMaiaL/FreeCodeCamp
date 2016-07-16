@@ -44,4 +44,24 @@ describe('SequenceHandler', function() {
     ).toBeTruthy();
   });
 
+  it('should compare itself with a smaller sequence\'s range', function() {
+    handler.setSequence(
+      new Sequence([1, 2, 3, 4])
+    );
+    expect(
+      handler.equals(new Sequence([1, 2, 3])) &&
+      handler.equals(new Sequence([1, 2])) &&
+      handler.equals(new Sequence([1]))
+    ).toBeTruthy();
+  });
+
+  it('should compare itself with a different sequence', function() {
+    handler.setSequence(
+      new Sequence([1, 2, 3, 4])
+    );
+    expect(
+      handler.equals(new Sequence([2, 1, 3]))
+    ).toBeFalsy();
+  });
+
 });
