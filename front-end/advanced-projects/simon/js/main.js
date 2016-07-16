@@ -31,7 +31,6 @@
  * game events and actions.
  * @param Sequence sequence
  */
-// TODO: Refactor those names.
 function Simon(sequence) {
 
   /**
@@ -124,9 +123,8 @@ function Simon(sequence) {
 }
 
 /**
- * Represents the user's sequence. 
+ * Represents the current player.
  */
-// TODO: Redefine tests and this class to use Player instead of UserSequence.
 function Player() {
 
   /**
