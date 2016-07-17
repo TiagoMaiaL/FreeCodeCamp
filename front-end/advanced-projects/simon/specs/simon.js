@@ -111,4 +111,12 @@ describe('Simon', function() {
     expect(presenterSpy.present).toHaveBeenCalledWith(game.getSequence());
   });
 
+  it('should reset player\'s colors when going to next round', function() {
+    var player = game.getPlayer()
+    player.addColor(new Color('red'));
+    game.goNextRound();
+
+    expect(player.getColorsCount()).toBe(0);
+  });
+
 });

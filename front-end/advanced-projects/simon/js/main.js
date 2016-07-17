@@ -107,7 +107,9 @@ function Simon(sequence) {
    */
   this.goNextRound = function() {
     this.addRandomColor();
-    gamePresenter.present(this.getSequence());
+    this.getPresenter().present(this.getSequence());
+    this.getPlayer().resetColors();
+
     return this;
   }
 
