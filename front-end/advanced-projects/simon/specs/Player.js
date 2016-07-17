@@ -15,7 +15,7 @@ describe('Player', function() {
 
   it('should store the user color sequence', function() {
     expect(
-      playerFactory().getSequence()
+      playerFactory().getColors()
     ).toEqual(jasmine.any(Sequence));
   });
 
@@ -29,6 +29,13 @@ describe('Player', function() {
     expect(function() {
       playerFactory().addColor(null)
     }).toThrow('Only colors can be added to the sequence.');
+  });
+
+  it('shoud be able to reset it\'s own sequence', function() {
+    var player = playerFactory();
+    player.addColor(new Color('red'));
+    player.resetColors();
+    expect(player.getColorsCount()).toBe(0);
   });
 
 });

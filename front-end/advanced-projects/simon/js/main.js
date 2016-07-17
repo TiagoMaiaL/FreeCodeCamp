@@ -127,7 +127,7 @@ function Simon(sequence) {
    * @return Boolean
    */
   this.validatePlayerSequence = function() {
-    return this.equals(this.getPlayer().getSequence());
+    return this.equals(this.getPlayer().getColors());
   }
 
   /**
@@ -203,14 +203,14 @@ function Player() {
    * Player's Sequence object.
    * @type Sequence
    */
-  var sequence = new Sequence();
+  var colors = new Sequence();
 
   /**
    * Returns the user's sequence.
    * @return Sequence
    */
-  this.getSequence = function() {
-    return sequence;
+  this.getColors = function() {
+    return colors;
   }
 
   /**
@@ -220,7 +220,7 @@ function Player() {
    */
   this.addColor = function(color) {
     guardColor(color);
-    sequence.push(color);
+    colors.push(color);
     return this;
   }
 
@@ -229,7 +229,15 @@ function Player() {
    * @return Integer
    */
   this.getColorsCount = function() {
-    return sequence.count();
+    return colors.count();
+  }
+
+  /**
+   * Resets the user's colors.
+   * @return void
+   */
+  this.resetColors = function() {
+    colors = new Sequence;
   }
 
   /**
