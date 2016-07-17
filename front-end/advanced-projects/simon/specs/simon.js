@@ -142,7 +142,7 @@ describe('Simon', function() {
     game.getPlayer().addColor(new Color('blue'));
     game.setSequence(gameColors);
 
-    game.validatePlayerRound();
+    game.checkPlayerRound();
 
     expect(presenter.presentWinner).toHaveBeenCalled();
   });
@@ -152,7 +152,7 @@ describe('Simon', function() {
     game.getPlayer().addColor(new Color('red'));
     game.setSequence(new Sequence([new Color('red')]));
 
-    game.validatePlayerRound();
+    game.checkPlayerRound();
 
     expect(game.getPresenter().present).toHaveBeenCalled();
     expect(game.getPlayer().getColorsCount()).toBe(0);

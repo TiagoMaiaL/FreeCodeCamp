@@ -47,9 +47,15 @@ function Simon(sequence) {
 
   /**
    * Game's sequence presenter
-   * @type SequencePresenter
+   * @type GamePresenter
    */
   var gamePresenter = null;
+
+  /**
+   * Maximum number of possible rounds.
+   * @type Integer
+   */
+  var maxRoundsNumber = 20;
 
   /**
    * Returns the game sequence
@@ -83,8 +89,16 @@ function Simon(sequence) {
   }
 
   /**
+   * Returns the game presenter.
+   * @return GamePresenter
+   */
+  this.getPresenter = function() {
+    return gamePresenter;
+  }
+
+  /**
    * Sets the game presentation object.
-   * @param SequencePresenter presenter
+   * @param GamePresenter presenter
    * @return void
    */
   this.setPresenter = function(presenter) {
@@ -93,11 +107,38 @@ function Simon(sequence) {
   }
 
   /**
-   * Returns the game presenter.
-   * @return SequencePresenter
+   * Retunds the maximum number of rounds.
+   * @return Integer
    */
-  this.getPresenter = function() {
-    return gamePresenter;
+  this.getMaxRounds = function() {
+    return maxRoundsNumber;
+  }
+
+  /**
+   * Sets the maximum number of rounds for the game.
+   * @param Integer maxRounds
+   */
+  this.setMaxRounds = function(maxRounds) {
+    maxRoundsNumber = maxRounds;
+  }
+
+  /**
+   * Validates the player round.
+   * @return void
+   */
+  this.checkPlayerRound = function() {
+    var areSequencesEqual = this.validatePlayerSequence();
+    var isLastRound = this.getPlayer().getColorsCount() == this.getMaxRounds();
+
+    if (areSequencesEqual && isLastRound) {
+      this.presentWinner();
+    }
+
+    if (areSequencesEqual) {
+      this.goNextRound();
+    }
+
+    // TODO: Present the same round again.
   }
 
   /**
@@ -109,8 +150,16 @@ function Simon(sequence) {
     this.addRandomColor();
     this.getPresenter().present(this.getSequence());
     this.getPlayer().resetColors();
-
     return this;
+  }
+
+  /**
+   * Show the presentWinner view for the player.
+   * @return void
+   */
+  this.presentWinner = function() {
+    this.getPresenter().presentWinner();
+    // TODO: Reset the game.
   }
 
   /**
