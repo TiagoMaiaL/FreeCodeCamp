@@ -160,7 +160,7 @@ function Simon(sequence) {
       this.goNextRound();
     }
 
-    // TODO: Reset the game in HARD mode.   
+    // TODO: Reset the game in HARD mode.
     
     this.presentRound();    
   }

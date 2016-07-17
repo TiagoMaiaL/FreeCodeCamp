@@ -195,4 +195,20 @@ describe('Simon', function() {
     expect(game.getPlayer().getColorsCount()).toBe(0);
   });
 
+  it('should reset the game if player\'s sequence is wrong and game is hard', function() {
+    game.getPlayer().addColor(new Color('green'));
+    game.getPlayer().addColor(new Color('yellow'));
+    game.setSequence(new Sequence([
+      new Color('blue'),
+      new Color('red')
+    ]));
+    game.setHardMode(true);
+
+    game.checkPlayerRound();
+
+    expect(game.getSequence().count()).toBe(1);
+    expect(game.getPlayer().getColorsCount()).toBe(0);
+    expect(game.getPresenter().present).toHaveBeenCalled();
+  });
+
 });
