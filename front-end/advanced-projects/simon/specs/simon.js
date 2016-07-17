@@ -174,4 +174,14 @@ describe('Simon', function() {
     expect(game.getPlayer().getColorsCount()).toBe(0);
   });
 
+  it('should be able to activate hard mode', function() {
+    game.setHardMode(true);
+    expect(game.getHardMode()).toBeTruthy();
+  });
+
+  it('should be able to deactivate hard mode', function() {
+    game.setHardMode(false);
+    expect(game.getHardMode()).toBeTruthy();
+  });
+
 });

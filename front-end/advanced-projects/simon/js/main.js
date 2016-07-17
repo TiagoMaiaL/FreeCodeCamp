@@ -138,7 +138,7 @@ function Simon(sequence) {
       this.goNextRound();
     }
 
-    // TODO: Present the same round again.
+    // TODO: Present the same round again OR Reset the game in HARD mode.
   }
 
   /**
