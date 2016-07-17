@@ -160,12 +160,9 @@ function Simon(sequence) {
       this.goNextRound();
     }
 
-
-    // TODO: Present the same round again OR Reset the game in HARD mode.
+    // TODO: Reset the game in HARD mode.   
     
-    // TOOD: Extract the below code into a function.
-    this.getPlayer().resetColors();
-    this.getPresenter().present(this.getSequence());
+    this.presentRound();    
   }
 
   /**
@@ -175,8 +172,7 @@ function Simon(sequence) {
    */
   this.goNextRound = function() {
     this.addRandomColor();
-    this.getPresenter().present(this.getSequence());
-    this.getPlayer().resetColors();
+    this.presentRound();
     return this;
   }
 
@@ -196,6 +192,15 @@ function Simon(sequence) {
   this.resetGame = function() {
     this.setSequence(new Sequence());
     this.getPlayer().resetColors();
+  }
+
+  /**
+   * Resets game's current round.
+   * @return void
+   */
+  this.presentRound = function() {
+    this.getPlayer().resetColors();
+    this.getPresenter().present(this.getSequence());
   }
 
   /**
