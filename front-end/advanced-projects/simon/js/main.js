@@ -159,7 +159,16 @@ function Simon(sequence) {
    */
   this.presentWinner = function() {
     this.getPresenter().presentWinner();
-    // TODO: Reset the game.
+    this.resetGame();
+  }
+
+  /**
+   * Resets the game color sequences.
+   * @return Void
+   */
+  this.resetGame = function() {
+    this.setSequence(new Sequence());
+    this.getPlayer().resetColors();
   }
 
   /**

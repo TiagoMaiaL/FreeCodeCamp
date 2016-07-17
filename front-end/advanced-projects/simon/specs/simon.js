@@ -14,7 +14,10 @@ describe('Simon', function() {
 
   beforeEach(function() {
     game = new Simon();
-    presenterSpy = jasmine.createSpyObj('GamePresenter', ['present']);
+    presenterSpy = jasmine.createSpyObj(
+      'GamePresenter',
+      ['present', 'presentWinner']
+    );
     game.setPresenter(
       presenterSpy
     );
@@ -125,16 +128,20 @@ describe('Simon', function() {
     expect(game.getMaxRounds()).toBe(3);
   });
 
+  it('should have a reset process', function() {
+    game.getPlayer().addColor(new Color('blue'));
+    game.setSequence(new Sequence([new Color('red')]));
+
+    game.resetGame();
+
+    expect(game.getSequence().count()).toBe(0);
+    expect(game.getPlayer().getColorsCount()).toBe(0);
+  });
+
   // TODO: write this test in a better way.
   it('should present the winner if sequences are final and equal', function() {
     var maxRoundsNumber = 2;
-    var presenter = jasmine.createSpyObj(
-      'GamePresenter',
-      ['present', 'presentWinner']
-    );
     game.setMaxRounds(maxRoundsNumber);
-    game.setPresenter(presenter);
-
     var gameColors = new Sequence([new Color('red'), new Color('blue')]);
 
     game.getPlayer().resetColors();
@@ -144,7 +151,16 @@ describe('Simon', function() {
 
     game.checkPlayerRound();
 
-    expect(presenter.presentWinner).toHaveBeenCalled();
+    expect(game.getPresenter().presentWinner).toHaveBeenCalled();
+  });
+
+  it('should reset while presenting winner', function() {
+    game.getPlayer().addColor(new Color('red'));
+    game.setSequence(new Sequence([new Color('green')]));
+    game.presentWinner();
+
+    expect(game.getSequence().count()).toBe(0);
+    expect(game.getPlayer().getColorsCount()).toBe(0);
   });
 
   it('should go to next round after validating the previous', function() {
