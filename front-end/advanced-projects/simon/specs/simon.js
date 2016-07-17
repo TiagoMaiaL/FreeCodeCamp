@@ -106,10 +106,6 @@ describe('Simon', function() {
     }).toThrow('Invalid presenter object sent.');
   });
 
-  if('should create a presenter if no one is provided', function() {
-    expect(game.getPresenter()).toEqual(jasmine.any(Object));
-  });
-
   it('should call the presentation object', function() {
     game.goNextRound();
     expect(presenterSpy.present).toHaveBeenCalledWith(game.getSequence());
