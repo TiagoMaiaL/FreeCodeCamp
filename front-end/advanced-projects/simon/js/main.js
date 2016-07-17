@@ -103,6 +103,14 @@ function Simon(sequence) {
   }
 
   /**
+   * Validates player's sequence
+   * @return Boolean
+   */
+  this.validatePlayerSequence = function() {
+    return this.equals(this.getPlayer().getSequence());
+  }
+
+  /**
    * Generates a random color.
    * @return Color
    */
@@ -266,17 +274,6 @@ function Sequence(externalItems) {
   }
 
   /**
-   * validates the passed items array.
-   * @param  Array items
-   * @throws Exception If items is not a valid array
-   */
-  this.guardItems = function(items) {
-    if (!(items instanceof Array)) {
-      throw 'Invalid array passed to sequence.';
-    }
-  }
-
-  /**
    * Sets the internal items array.
    * @param Array items
    * @return void
@@ -287,7 +284,7 @@ function Sequence(externalItems) {
       return;
     }
 
-    this.guardItems(externalItems);
+    guardItems(externalItems);
     items = externalItems;
   }
 
@@ -306,6 +303,17 @@ function Sequence(externalItems) {
     }
 
     return first === second;
+  }
+
+  /**
+   * validates the passed items array.
+   * @param  Array items
+   * @throws Exception If items is not a valid array
+   */
+  var guardItems = function(items) {
+    if (!(items instanceof Array)) {
+      throw 'Invalid array passed to sequence.';
+    }
   }
 
   /**

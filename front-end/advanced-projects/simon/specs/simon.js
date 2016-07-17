@@ -65,4 +65,24 @@ describe('Simon', function() {
     expect(game.getPlayer()).toEqual(jasmine.any(Player));
   });
 
+  it('should validate the player\'s sequence range', function() {
+    game.setSequence(
+      new Sequence([
+        new Color('blue'),
+        new Color('red'),
+        new Color('green')
+      ])
+    );
+    game.getPlayer().addColor(new Color('blue'));
+    expect(game.validatePlayerSequence()).toBeTruthy();
+  });
+
+  it('should validate the player\'s sequence', function() {
+    game.setSequence(
+      new Sequence([new Color('red')])
+    );
+    game.getPlayer().addColor(new Color('red'));
+    expect(game.validatePlayerSequence()).toBeTruthy();
+  });
+
 });
