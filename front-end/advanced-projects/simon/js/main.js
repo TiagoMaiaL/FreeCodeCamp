@@ -160,7 +160,12 @@ function Simon(sequence) {
       this.goNextRound();
     }
 
+
     // TODO: Present the same round again OR Reset the game in HARD mode.
+    
+    // TOOD: Extract the below code into a function.
+    this.getPlayer().resetColors();
+    this.getPresenter().present(this.getSequence());
   }
 
   /**

@@ -184,4 +184,15 @@ describe('Simon', function() {
     expect(game.getHardMode()).toBeFalsy();
   });
 
+  it('should present the same round if player\'s sequence is wrong', function() {
+    game.getPlayer().addColor(new Color('red'));
+    game.setSequence(new Sequence([new Color('blue')]));
+
+    game.checkPlayerRound();
+
+    expect(game.getPresenter().present).toHaveBeenCalledWith(game.getSequence());
+    expect(game.getSequence().count()).toBe(1);
+    expect(game.getPlayer().getColorsCount()).toBe(0);
+  });
+
 });
