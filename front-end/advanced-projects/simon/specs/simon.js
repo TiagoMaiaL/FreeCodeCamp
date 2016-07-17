@@ -10,9 +10,14 @@
 describe('Simon', function() {
 
   var game;
+  var presenterSpy;
 
   beforeEach(function() {
     game = new Simon();
+    presenterSpy = jasmine.createSpyObj('SequencePresenter', ['present']);
+    game.setPresenter(
+      presenterSpy
+    );
   });
 
   it('should come with a empty sequence if no one is passed', function() {
@@ -106,13 +111,8 @@ describe('Simon', function() {
   });
 
   it('should call the presentation object', function() {
-    var presenter = jasmine.createSpyObj('SequencePresenter', [
-      'present'
-    ]);
-    game.setPresenter(presenter);
     game.goNextRound();
-
-    expect(presenter.present).toHaveBeenCalledWith(game.getSequence());
+    expect(presenterSpy.present).toHaveBeenCalledWith(game.getSequence());
   });
 
 });

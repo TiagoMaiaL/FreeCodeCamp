@@ -89,16 +89,6 @@ function Simon(sequence) {
    */
   this.setPresenter = function(presenter) {
     guardPresenter(presenter);
-
-    if (presenter == null) {
-      // TODO: Replace this with a SequencePresenter object
-      gamePresenter = {
-        present : function() {}
-      };
-
-      return;
-    }
-
     gamePresenter = presenter;
   }
 
