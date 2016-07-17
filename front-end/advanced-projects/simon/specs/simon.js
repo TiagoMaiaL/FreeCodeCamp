@@ -181,7 +181,7 @@ describe('Simon', function() {
 
   it('should be able to deactivate hard mode', function() {
     game.setHardMode(false);
-    expect(game.getHardMode()).toBeTruthy();
+    expect(game.getHardMode()).toBeFalsy();
   });
 
 });

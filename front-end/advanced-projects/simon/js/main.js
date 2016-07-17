@@ -58,6 +58,12 @@ function Simon(sequence) {
   var maxRoundsNumber = 20;
 
   /**
+   * Is the game in hard mode?
+   * @type Boolean
+   */
+  var hardModeActive = false;
+
+  /**
    * Returns the game sequence
    * @return Sequence
    */
@@ -120,6 +126,22 @@ function Simon(sequence) {
    */
   this.setMaxRounds = function(maxRounds) {
     maxRoundsNumber = maxRounds;
+  }
+
+  /**
+   * Sets the game in hard mode or dactivates it.
+   * @param Boolean
+   */
+  this.setHardMode = function(isHardMode) {
+    hardModeActive = isHardMode;
+  }
+
+  /**
+   * Returns a boolean indicating if the game is in hard mode.
+   * @return Boolean
+   */
+  this.getHardMode = function() {
+    return hardModeActive;
   }
 
   /**
