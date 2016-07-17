@@ -46,23 +46,10 @@ function Simon(sequence) {
   var player = new Player();
 
   /**
-   * Returns the underlying player object.
-   * @return Player
+   * Game's sequence presenter
+   * @type SequencePresenter
    */
-  this.getPlayer = function() {
-    return player;
-  }
-
-  /**
-   * Adds a random color to the passed colors sequence.
-   * @param Sequence colors
-   * @throws Exception If sequence is not a Sequence
-   * @returns Sequence
-   */
-  this.addRandomColor = function() {
-    gameSequence.push(getRandomColor());
-    return gameSequence;
-  }
+  var gamePresenter = null;
 
   /**
    * Returns the game sequence
@@ -88,6 +75,72 @@ function Simon(sequence) {
   }
 
   /**
+   * Returns the underlying player object.
+   * @return Player
+   */
+  this.getPlayer = function() {
+    return player;
+  }
+
+  /**
+   * Sets the game presentation object.
+   * @param SequencePresenter presenter
+   * @return void
+   */
+  this.setPresenter = function(presenter) {
+    guardPresenter(presenter);
+
+    if (presenter == null) {
+      // TODO: Replace this with a SequencePresenter object
+      gamePresenter = {
+        present : function() {}
+      };
+
+      return;
+    }
+
+    gamePresenter = presenter;
+  }
+
+  /**
+   * Returns the game presenter.
+   * @return SequencePresenter
+   */
+  this.getPresenter = function() {
+    return gamePresenter;
+  }
+
+  /**
+   * Makes the game go to next round and
+   * calls the presentation process.
+   * @return Game
+   */
+  this.goNextRound = function() {
+    this.addRandomColor();
+    gamePresenter.present(this.getSequence());
+    return this;
+  }
+
+  /**
+   * Adds a random color to the passed colors sequence.
+   * @param Sequence colors
+   * @throws Exception If sequence is not a Sequence
+   * @returns Sequence
+   */
+  this.addRandomColor = function() {
+    gameSequence.push(getRandomColor());
+    return gameSequence;
+  }
+
+  /**
+   * Validates player's sequence
+   * @return Boolean
+   */
+  this.validatePlayerSequence = function() {
+    return this.equals(this.getPlayer().getSequence());
+  }
+
+  /**
    * Compares the handler's sequence to the given one.
    * @param  Sequence sequence
    * @return Boolean
@@ -100,14 +153,6 @@ function Simon(sequence) {
     }
 
     return handlerSequence.equals(sequence);
-  }
-
-  /**
-   * Validates player's sequence
-   * @return Boolean
-   */
-  this.validatePlayerSequence = function() {
-    return this.equals(this.getPlayer().getSequence());
   }
 
   /**
@@ -129,7 +174,7 @@ function Simon(sequence) {
    * @throws Exception If Sequence is not a sequence
    * @return void
    */
-  function guardSequence(sequence) {
+  var guardSequence = function(sequence) {
     if (sequence == false || sequence == null) {
       return;
     }
@@ -139,7 +184,24 @@ function Simon(sequence) {
     }
   }
 
+  /**
+   * Validates the presenter.
+   * @param  SequencePresenter presenter
+   * @throws Exception If presenter is invalid
+   * @return void
+   */
+  var guardPresenter = function(presenter) {
+    if (presenter == null || presenter == undefined) {
+      return;
+    }
+
+    if (typeof presenter.present != 'function') {
+      throw 'Invalid presenter object sent.';
+    }
+  }
+
   this.setSequence(sequence);
+  this.setPresenter();
 }
 
 /**

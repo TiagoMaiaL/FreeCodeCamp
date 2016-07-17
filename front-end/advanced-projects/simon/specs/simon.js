@@ -85,4 +85,34 @@ describe('Simon', function() {
     expect(game.validatePlayerSequence()).toBeTruthy();
   });
 
+  it('should go to next round', function() {
+    expect(game.goNextRound().getSequence().count()).toBe(1);
+  });
+
+  it('should set and provide a presentation object', function() {
+    var presenter = jasmine.createSpyObj('SequencePresenter', ['present']);
+    game.setPresenter(presenter);
+    expect(game.getPresenter()).toBe(presenter);
+  });
+
+  it('should deny an invalid presenter to be set', function() {
+    expect(function() {
+      game.setPresenter(new Object())
+    }).toThrow('Invalid presenter object sent.');
+  });
+
+  if('should create a presenter if no one is provided', function() {
+    expect(game.getPresenter()).toEqual(jasmine.any(Object));
+  });
+
+  it('should call the presentation object', function() {
+    var presenter = jasmine.createSpyObj('SequencePresenter', [
+      'present'
+    ]);
+    game.setPresenter(presenter);
+    game.goNextRound();
+
+    expect(presenter.present).toHaveBeenCalledWith(game.getSequence());
+  });
+
 });
