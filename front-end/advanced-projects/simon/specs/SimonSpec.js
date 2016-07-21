@@ -214,7 +214,7 @@ describe('Simon', function() {
   it('should have a input handler', function() {
     var inputHandler = jasmine.createSpyObj(
         'InputHandler',
-        ['receiveInput']
+        ['receive']
     );
     game.setInputHandler(inputHandler);
 
