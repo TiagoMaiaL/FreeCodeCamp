@@ -45,6 +45,12 @@ function Simon(sequence) {
   var hardModeActive = false;
 
   /**
+   * Game's input handler
+   * @type InputHandler
+   */
+  var inputHandler = null;
+
+  /**
    * Returns the game sequence
    * @return Sequence
    */
@@ -126,6 +132,22 @@ function Simon(sequence) {
   }
 
   /**
+   * Sets the input handler for the given object.
+   * @param InputHandler handler
+   */
+  this.setInputHandler = function(handler) {
+    inputHandler = handler;
+  }
+
+  /**
+   * Returns the input handler.
+   * @return InputHandler
+   */
+  this.getInputHandler = function() {
+    return inputHandler;
+  }
+
+  /**
    * Validates the player round.
    * @return void
    */
@@ -145,8 +167,8 @@ function Simon(sequence) {
       this.resetGame();
       this.goNextRound();
     }
-    
-    this.presentRound();    
+
+    this.presentRound();
   }
 
   /**

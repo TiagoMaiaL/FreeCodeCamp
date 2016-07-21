@@ -211,4 +211,14 @@ describe('Simon', function() {
     expect(game.getPresenter().present).toHaveBeenCalled();
   });
 
+  it('should have a input handler', function() {
+    var inputHandler = jasmine.createSpyObj(
+        'InputHandler',
+        ['receiveInput']
+    );
+    game.setInputHandler(inputHandler);
+
+    expect(game.getInputHandler()).toBe(inputHandler);
+  });
+
 });
