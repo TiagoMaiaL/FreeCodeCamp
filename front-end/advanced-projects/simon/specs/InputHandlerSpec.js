@@ -10,14 +10,33 @@
 describe('InputHandler', function() {
 
   var inputHandler = null;
+  var game = {
+    isPresenting : false,
+    setInputHandler : function(handler) {
+
+    },
+    setHardMode : function(mode) {
+
+    },
+    isPresentingSequence : function() {
+      return this.isPresenting;
+    },
+    getPlayer : function() {
+      return this.player;
+    },
+    player : {
+      addColor : function(color) {
+
+      }
+    }
+  }
 
   beforeEach(function() {
     inputHandler = new InputHandler();
+    inputHandler.setGame(game);
   });
 
   it('should have a game reference', function() {
-    var game = jasmine.createSpyObj('Simon', 'setInputHandler');
-
     inputHandler.setGame(game);
     expect(inputHandler.getGame()).toBe(game);
   });
@@ -27,50 +46,28 @@ describe('InputHandler', function() {
   });
 
   it('should add a color to the game player', function() {
-    var game = {
-      player : {
-        addColor : function(color) {}
-      }
-    }
     spyOn(game.player, 'addColor');
-    inputHandler.setGame(game);
     inputHandler.receive({color : 'red'});
 
     expect(game.player.addColor).toHaveBeenCalledWith(jasmine.any(Color));
   });
 
   it('should change the game mode', function() {
-    var game = {
-      setHardMode : function(mode) {}
-    }
     spyOn(game, 'setHardMode');
-    inputHandler.setGame(game);
     inputHandler.receive({hardMode : true});
 
     expect(game.setHardMode).toHaveBeenCalledWith(true);
   });
 
   it('should check if sequence is being presented', function() {
-    var game = {
-      isPresentingSequence : function() {
-        return true;
-      }
-    }
     spyOn(game, 'isPresentingSequence');
-    inputHandler.setGame(game);
     inputHandler.receive({color : 'red'});
 
     expect(game.isPresentingSequence).toHaveBeenCalled();
   });
 
   it('should forbid any input while presenting', function() {
-    var game = {
-      isPresentingSequence : function() {
-        return true;
-      }
-    }
-    inputHandler.setGame(game);
-
+    game.isPresenting = true;
     expect(function() {
       inputHandler.receive({color : 'red'});
     }).toThrow('The sequence is being presented.');
