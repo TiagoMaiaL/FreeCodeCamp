@@ -14,7 +14,7 @@ $(document).ready(function() {
    * the color sequence to the user.
    * @type SequencePresenter
    */
-  // var presenter = new SequencePresenter();
+  var presenter = new SequencePresenter();
 
   /**
    * Object responsible for handling user input.
