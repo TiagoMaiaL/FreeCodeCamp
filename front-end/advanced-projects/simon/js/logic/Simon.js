@@ -157,15 +157,18 @@ function Simon(sequence) {
 
     if (areSequencesEqual && isLastRound) {
       this.presentWinner();
+      return;
     }
 
     if (areSequencesEqual) {
       this.goNextRound();
+      return;
     }
 
     if (this.getHardMode()) {
       this.resetGame();
       this.goNextRound();
+      return;
     }
 
     this.presentRound();
@@ -227,6 +230,14 @@ function Simon(sequence) {
   this.presentWinner = function() {
     this.getPresenter().presentWinner();
     this.resetGame();
+  }
+
+  /**
+   * Checks if the presentation is happening.
+   * @return Boolean
+   */
+  this.isPresentingSequence = function() {
+    return false;
   }
 
   /**
