@@ -221,4 +221,13 @@ describe('Simon', function() {
     expect(game.getInputHandler()).toBe(inputHandler);
   });
 
+  it('should have a start method', function() {
+    expect(game.start).toBeDefined();
+  });
+
+  it('should start the game initial round', function() {
+    game.start();
+    expect(game.getSequence().getCount()).toBe(1);
+  });
+
 });
