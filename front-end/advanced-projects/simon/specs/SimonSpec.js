@@ -227,7 +227,7 @@ describe('Simon', function() {
 
   it('should start the game initial round', function() {
     game.start();
-    expect(game.getSequence().getCount()).toBe(1);
+    expect(game.getSequence().count()).toBe(1);
   });
 
 });

@@ -172,23 +172,12 @@ function Simon(sequence) {
   }
 
   /**
-   * Makes the game go to next round and
-   * calls the presentation process.
-   * @return Game
+   * Starts the game.
+   * @return SimonGame
    */
-  this.goNextRound = function() {
-    this.addRandomColor();
-    this.presentRound();
+  this.start = function() {
+    this.goNextRound();
     return this;
-  }
-
-  /**
-   * Show the presentWinner view for the player.
-   * @return void
-   */
-  this.presentWinner = function() {
-    this.getPresenter().presentWinner();
-    this.resetGame();
   }
 
   /**
@@ -201,12 +190,14 @@ function Simon(sequence) {
   }
 
   /**
-   * Resets game's current round.
-   * @return void
+   * Makes the game go to next round and
+   * calls the presentation process.
+   * @return Game
    */
-  this.presentRound = function() {
-    this.getPlayer().resetColors();
-    this.getPresenter().present(this.getSequence());
+  this.goNextRound = function() {
+    this.addRandomColor();
+    this.presentRound();
+    return this;
   }
 
   /**
@@ -218,6 +209,24 @@ function Simon(sequence) {
   this.addRandomColor = function() {
     gameSequence.push(getRandomColor());
     return gameSequence;
+  }
+
+  /**
+   * Resets game's current round.
+   * @return void
+   */
+  this.presentRound = function() {
+    this.getPlayer().resetColors();
+    this.getPresenter().present(this.getSequence());
+  }
+
+  /**
+   * Show the presentWinner view for the player.
+   * @return void
+   */
+  this.presentWinner = function() {
+    this.getPresenter().presentWinner();
+    this.resetGame();
   }
 
   /**
