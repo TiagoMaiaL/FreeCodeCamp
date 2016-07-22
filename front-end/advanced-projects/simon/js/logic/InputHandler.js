@@ -39,9 +39,7 @@ function InputHandler() {
    * @return void
    */
   this.receive = function(info) {
-    if (this.getGame().isPresentingSequence()) {
-      throw 'The sequence is being presented.';
-    }
+    guardPresentation();
 
     if (info.hasOwnProperty('color')) {
       this.getGame().getPlayer().addColor(
@@ -53,5 +51,15 @@ function InputHandler() {
       this.getGame().setHardMode(info.hardMode);
     }
   }
+
+  /**
+   * Checks if the game sequence is being presented.
+   * @throws Exception If game's sequence is being presented.
+   */
+  var guardPresentation = function() {
+    if (this.getGame().isPresentingSequence()) {
+      throw 'The sequence is being presented.';
+    }
+  }.bind(this);
 
 }
