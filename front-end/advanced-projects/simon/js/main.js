@@ -6,6 +6,8 @@
  * Simon game solution.
  * https://www.freecodecamp.com/challenges/build-a-simon-game
  */
+// TODO: Refactor to use getters and setters.
+// TODO: Refactor to use Prototypes.
 
 $(document).ready(function() {
 
@@ -15,6 +17,23 @@ $(document).ready(function() {
    * @type SequencePresenter
    */
   var presenter = new SequencePresenter();
+  presenter.present(new Sequence(
+    [
+      new Color('red'),
+      new Color('blue'),
+      new Color('green'),
+      new Color('red'),
+      new Color('yellow'),
+      new Color('green'),
+      new Color('blue'),
+      new Color('red'),
+      new Color('green'),
+      new Color('yellow'),
+      new Color('blue'),
+      new Color('red'),
+      new Color('green')
+    ]
+  ));
 
   /**
    * Object responsible for handling user input.
@@ -35,7 +54,7 @@ $(document).ready(function() {
   var initGame = function() {
     bindDomEvents();
 
-    // game.setPresenter(presenter);
+    game.setPresenter(presenter);
     game.setInputHandler(inputHandler);
     inputHandler.setGame(game);
   }
