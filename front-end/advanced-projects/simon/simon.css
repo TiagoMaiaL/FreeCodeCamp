@@ -24,21 +24,21 @@ div.controls div.control {
 }
 
 #red-control {
-    background-color: red;
+    background-color: #CC3300;
     float: left;
 }
 
 #yellow-control {
-    background-color: yellow;
+    background-color: #EAF200;
     float: left;
 }
 
 #green-control {
-    background-color: green;
+    background-color: #28ED00;
     float: right;
 }
 
 #blue-control {
+    background-color: #0099CC;
     float: right;
-    background-color: blue;
 }

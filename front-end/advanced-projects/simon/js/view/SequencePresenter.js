@@ -17,6 +17,17 @@
 function SequencePresenter() {
 
   /**
+   * The Hex of the colors used by each control.
+   * @type Object
+   */
+  var colorsHex = {
+    blue    : '#0099CC',
+    green   : '#28ED00',
+    yellow  : '#EAF200',
+    red     : '#CC3300',
+  }
+
+  /**
    * Reference to the red control element.
    * @type Object
    */
@@ -136,10 +147,10 @@ function SequencePresenter() {
   var clearControls = function(index, array) {
     // TODO: Cancel any playing sound.
   
-    setControlColor(redControl, 'red');
-    setControlColor(yellowControl, 'yellow');
-    setControlColor(greenControl, 'green');
-    setControlColor(blueControl, 'blue');
+    setControlColor(redControl, colorsHex.red);
+    setControlColor(yellowControl, colorsHex.yellow);
+    setControlColor(greenControl, colorsHex.green);
+    setControlColor(blueControl, colorsHex.blue);
 
     if (index + 1 == array.length)
       isPresenting = false;
