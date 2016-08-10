@@ -71,10 +71,15 @@ function SequencePresenter() {
     // TODO: Set timeout interval.
     sequence.getItems().forEach(function(color, index, array) {
       var calculatedDelay = calculateDelay(array.length) * (index + 1);
+      var pauseDelay = calculatedDelay + 400;
 
       setTimeout(function() {
         presentColor(color, index, array);
       }, calculatedDelay);
+
+      setTimeout(function() {
+        clearControls(index, array);
+      }, pauseDelay);
     });
   }
 
@@ -94,8 +99,6 @@ function SequencePresenter() {
    * @return void
    */
   var presentColor = function(color, index, array) {
-    clearColors();
-
     switch(color.getName()) {
       case 'red':
         setControlColor(redControl, 'gray');
@@ -118,13 +121,20 @@ function SequencePresenter() {
 
   /**
    * Sets the initial colors for all the controls.
+   * @param Integer index
+   * @param Array array
    * @return void
    */
-  var clearColors = function() {
+  var clearControls = function(index, array) {
+    // TODO: Cancel any playing sound.
+  
     setControlColor(redControl, 'red');
     setControlColor(yellowControl, 'yellow');
     setControlColor(greenControl, 'green');
     setControlColor(blueControl, 'blue');
+
+    if (index + 1 == array.length)
+      isPresenting = false;
   }
 
   /**

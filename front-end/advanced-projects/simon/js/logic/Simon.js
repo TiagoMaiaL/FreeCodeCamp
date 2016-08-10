@@ -237,7 +237,7 @@ function Simon(sequence) {
    * @return Boolean
    */
   this.isPresentingSequence = function() {
-    return false;
+    return this.getPresenter().isPresentingSequence();
   }
 
   /**

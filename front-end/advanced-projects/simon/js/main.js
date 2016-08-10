@@ -17,6 +17,7 @@ $(document).ready(function() {
    * @type SequencePresenter
    */
   var presenter = new SequencePresenter();
+  // TODO: Remove this later on.
   presenter.present(new Sequence(
     [
       new Color('red'),
