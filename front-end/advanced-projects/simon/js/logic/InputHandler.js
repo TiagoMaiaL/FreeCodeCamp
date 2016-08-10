@@ -45,6 +45,7 @@ function InputHandler() {
       this.getGame().getPlayer().addColor(
         new Color(info.color)
       );
+      this.getGame().checkPlayerRound();
     }
 
     if (info.hasOwnProperty('hardMode')) {

@@ -151,16 +151,22 @@ function Simon(sequence) {
    * Validates the player round.
    * @return void
    */
+  // TODO: Refactor this.
   this.checkPlayerRound = function() {
     var areSequencesEqual = this.validatePlayerSequence();
     var isLastRound = this.getPlayer().getColorsCount() == this.getMaxRounds();
+    var areSameCount = this.getPlayer().getColorsCount() == gameSequence.count();
 
-    if (areSequencesEqual && isLastRound) {
+    if (areSequencesEqual && !areSameCount) {
+      return;
+    }
+
+    if (areSequencesEqual && areSameCount && isLastRound) {
       this.presentWinner();
       return;
     }
 
-    if (areSequencesEqual) {
+    if (areSequencesEqual && areSameCount) {
       this.goNextRound();
       return;
     }

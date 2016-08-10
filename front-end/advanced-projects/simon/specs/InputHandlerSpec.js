@@ -12,12 +12,8 @@ describe('InputHandler', function() {
   var inputHandler = null;
   var game = {
     isPresenting : false,
-    setInputHandler : function(handler) {
-
-    },
-    setHardMode : function(mode) {
-
-    },
+    setInputHandler : function(handler) {},
+    setHardMode : function(mode) {},
     isPresentingSequence : function() {
       return this.isPresenting;
     },
@@ -25,10 +21,9 @@ describe('InputHandler', function() {
       return this.player;
     },
     player : {
-      addColor : function(color) {
-
-      }
-    }
+      addColor : function(color) {}
+    },
+    checkPlayerRound : function() {}
   }
 
   beforeEach(function() {
@@ -71,6 +66,12 @@ describe('InputHandler', function() {
     expect(function() {
       inputHandler.receive({color : 'red'});
     }).toThrow('The sequence is being presented.');
+  });
+
+  it('should ask the game to check rounds after each input', function() {
+    game.isPresenting = false;
+    spyOn(game, 'checkPlayerRound');
+    inputHandler.receive({color : 'green'});
   });
 
 });
