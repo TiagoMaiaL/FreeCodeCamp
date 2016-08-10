@@ -153,20 +153,20 @@ function Simon(sequence) {
    */
   // TODO: Refactor this.
   this.checkPlayerRound = function() {
-    var areSequencesEqual = this.validatePlayerSequence();
+    var isSequenceValid = this.validatePlayerSequence();
     var isLastRound = this.getPlayer().getColorsCount() == this.getMaxRounds();
-    var areSameCount = this.getPlayer().getColorsCount() == gameSequence.count();
+    var hasSameCount = this.getPlayer().getColorsCount() == gameSequence.count();
 
-    if (areSequencesEqual && !areSameCount) {
+    if (isSequenceValid && !hasSameCount) {
       return;
     }
 
-    if (areSequencesEqual && areSameCount && isLastRound) {
+    if (isSequenceValid && hasSameCount && isLastRound) {
       this.presentWinner();
       return;
     }
 
-    if (areSequencesEqual && areSameCount) {
+    if (isSequenceValid && hasSameCount) {
       this.goNextRound();
       return;
     }

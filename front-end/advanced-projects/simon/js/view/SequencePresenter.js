@@ -92,6 +92,14 @@ function SequencePresenter() {
   }
 
   /**
+   * Presents the winner view to the player.
+   * @return void
+   */
+  this.presentWinner = function() {
+    console.log("winner");
+  }
+
+  /**
    * presents a single color to the user.
    * @param  Color color
    * @param  Integer index
