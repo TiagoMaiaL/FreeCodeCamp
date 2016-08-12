@@ -18,21 +18,21 @@ $(document).ready(function() {
    */
   var presenter = new SequencePresenter();
   // TODO: Remove this later on.
-  presenter.present(new Sequence([
-    new Color('red'),
-    new Color('blue'),
-    new Color('green'),
-    new Color('red'),
-    new Color('yellow'),
-    new Color('green'),
-    new Color('blue'),
-    new Color('red'),
-    new Color('green'),
-    new Color('yellow'),
-    new Color('blue'),
-    new Color('red'),
-    new Color('green')
-  ]));
+  // presenter.present(new Sequence([
+  //   new Color('red'),
+  //   new Color('blue'),
+  //   new Color('green'),
+  //   new Color('red'),
+  //   new Color('yellow'),
+  //   new Color('green'),
+  //   new Color('blue'),
+  //   new Color('red'),
+  //   new Color('green'),
+  //   new Color('yellow'),
+  //   new Color('blue'),
+  //   new Color('red'),
+  //   new Color('green')
+  // ]));
 
   /**
    * Object responsible for handling user input.

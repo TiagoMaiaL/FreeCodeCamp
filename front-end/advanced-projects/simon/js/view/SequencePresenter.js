@@ -28,28 +28,15 @@ function SequencePresenter() {
   }
 
   /**
-   * Reference to the red control element.
-   * @type Object
+   * Reference to the colors controls.
+   * @type {Object}
    */
-  var redControl = null;
-
-  /**
-   * Reference to the yellow control element.
-   * @type Object
-   */
-  var yellowControl = null;
-
-  /**
-   * Reference to the green control element.
-   * @type Object
-   */
-  var greenControl = null;
-
-  /**
-   * Reference to the blue control element.
-   * @type Object
-   */
-  var blueControl = null;
+  var controls = {
+    red     : null,
+    yellow  : null,
+    green   : null,
+    blue    : null
+  }
 
   /**
    * Flag indicating whether sequence
@@ -63,10 +50,10 @@ function SequencePresenter() {
    * @return void
    */
   this.bindElements = function() {
-    redControl = $('#red-control');
-    yellowControl = $('#yellow-control');
-    greenControl = $('#green-control');
-    blueControl = $('#blue-control');
+    controls.red    = $('#red-control');
+    controls.yellow = $('#yellow-control');
+    controls.green  = $('#green-control');
+    controls.blue   = $('#blue-control');
   }
 
   /**
@@ -120,16 +107,16 @@ function SequencePresenter() {
   var presentColor = function(color, index, array) {
     switch(color.getName()) {
       case 'red':
-        setControlColor(redControl, 'gray');
+        setControlColor(controls.red, 'gray');
         break;
       case 'yellow':
-        setControlColor(yellowControl, 'gray');
+        setControlColor(controls.yellow, 'gray');
         break;
       case 'green':
-        setControlColor(greenControl, 'gray');
+        setControlColor(controls.green, 'gray');
         break;
       case 'blue':
-        setControlColor(blueControl, 'gray');
+        setControlColor(controls.blue, 'gray');
         break;
     }
 
@@ -147,10 +134,10 @@ function SequencePresenter() {
   var clearControls = function(index, array) {
     // TODO: Cancel any playing sound.
   
-    setControlColor(redControl, colorsHex.red);
-    setControlColor(yellowControl, colorsHex.yellow);
-    setControlColor(greenControl, colorsHex.green);
-    setControlColor(blueControl, colorsHex.blue);
+    setControlColor(controls.red, colorsHex.red);
+    setControlColor(controls.yellow, colorsHex.yellow);
+    setControlColor(controls.green, colorsHex.green);
+    setControlColor(controls.blue, colorsHex.blue);
 
     if (index + 1 == array.length)
       isPresenting = false;
