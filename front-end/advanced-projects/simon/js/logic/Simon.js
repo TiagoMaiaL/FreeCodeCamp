@@ -171,13 +171,7 @@ function Simon(sequence) {
       return;
     }
 
-    if (this.getHardMode()) {
-      this.resetGame();
-      this.goNextRound();
-      return;
-    }
-
-    this.presentRound();
+    this.presentLoss();
   }
 
   /**
@@ -236,6 +230,23 @@ function Simon(sequence) {
   this.presentWinner = function() {
     this.getPresenter().presentWinner();
     this.resetGame();
+  }
+
+  /**
+   * Presents the loss to the user
+   * @return void
+   */
+  this.presentLoss = function() {
+    // TODO: Present loss sounds
+    // TODO: Present loss animations.
+
+    if (this.getHardMode()) {
+      this.resetGame();
+      this.goNextRound();
+      return;
+    }
+
+    this.presentRound();
   }
 
   /**

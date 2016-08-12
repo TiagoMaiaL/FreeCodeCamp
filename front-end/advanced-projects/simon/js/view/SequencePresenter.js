@@ -63,6 +63,8 @@ function SequencePresenter() {
    * @return void
    */
   this.present = function(sequence) {
+    updateSequenceCounter(sequence.count());
+
     isPresenting = true;
 
     // TODO: present sequence.
@@ -160,6 +162,15 @@ function SequencePresenter() {
    */
   var setControlColor = function(control, color) {
     control.css('background-color', color);
+  }
+
+  /**
+   * Updates the game's sequence counter to the user.
+   * @param  Integer count
+   * @return void
+   */
+  var updateSequenceCounter = function(count) {
+    $('#sequence-counter').text(count);
   }
 
   this.bindElements();
