@@ -39,6 +39,12 @@ function SequencePresenter() {
   }
 
   /**
+   * Sound instance.
+   * @type Sound
+   */
+  var sound = new Sound();
+
+  /**
    * Flag indicating whether sequence
    * is being presented.
    * @type Boolean
@@ -109,15 +115,19 @@ function SequencePresenter() {
   var presentColor = function(color, index, array) {
     switch(color.getName()) {
       case 'red':
+        sound.play('red');
         setControlColor(controls.red, 'gray');
         break;
       case 'yellow':
+        sound.play('yellow');
         setControlColor(controls.yellow, 'gray');
         break;
       case 'green':
+        sound.play('green');
         setControlColor(controls.green, 'gray');
         break;
       case 'blue':
+        sound.play('blue');
         setControlColor(controls.blue, 'gray');
         break;
     }

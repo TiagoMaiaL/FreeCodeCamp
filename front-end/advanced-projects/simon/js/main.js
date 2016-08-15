@@ -114,9 +114,3 @@ $(document).ready(function() {
   initGame();
 
 });
-
-
-
-
-
-
