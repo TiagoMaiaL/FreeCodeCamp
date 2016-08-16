@@ -56,10 +56,10 @@ function SequencePresenter() {
    * @return void
    */
   this.bindElements = function() {
-    controls.red    = $('#red-control');
-    controls.yellow = $('#yellow-control');
-    controls.green  = $('#green-control');
-    controls.blue   = $('#blue-control');
+    controls.red    = $('#red');
+    controls.yellow = $('#yellow');
+    controls.green  = $('#green');
+    controls.blue   = $('#blue');
   }
 
   /**

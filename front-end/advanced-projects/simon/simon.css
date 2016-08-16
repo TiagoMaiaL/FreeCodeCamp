@@ -36,25 +36,29 @@ div.controls {
 div.controls div.control {
     width: 50%;
     height: 50%;
-    border: white;
+    position: absolute;
 }
 
-#red-control {
+#red.control {
     background-color: #CC3300;
-    float: left;
+    top: 0;
+    left: 0;
 }
 
-#yellow-control {
+#yellow.control {
     background-color: #EAF200;
-    float: left;
+    top: 0;
+    left: 50%;
 }
 
-#green-control {
+#green.control {
     background-color: #28ED00;
-    float: right;
+    top: 50%;
+    left: 0;
 }
 
-#blue-control {
+#blue.control {
     background-color: #0099CC;
-    float: right;
+    top: 50%;
+    left: 50%;
 }

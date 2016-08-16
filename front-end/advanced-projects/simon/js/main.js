@@ -72,16 +72,16 @@ $(document).ready(function() {
       var colorName = null;
 
       switch($(this).attr('id')) {
-        case 'red-control':
+        case 'red':
           colorName = 'red';
           break;
-        case 'yellow-control':
+        case 'yellow':
           colorName = 'yellow';
           break;
-        case 'green-control':
+        case 'green':
           colorName = 'green';
           break;
-        case 'blue-control':
+        case 'blue':
           colorName = 'blue';
       }
 
