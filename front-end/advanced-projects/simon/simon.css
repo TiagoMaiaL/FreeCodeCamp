@@ -39,22 +39,22 @@ div.controls div.control {
     position: absolute;
 }
 
-#red.control {
-    background-color: #CC3300;
-    top: 0;
+#green.control {
+    background-color: #28ED00;
+    top: 0%;
     left: 0;
 }
 
 #yellow.control {
     background-color: #EAF200;
-    top: 0;
-    left: 50%;
+    top: 50%;
+    left: 0%;
 }
 
-#green.control {
-    background-color: #28ED00;
-    top: 50%;
-    left: 0;
+#red.control {
+    background-color: #CC3300;
+    top: 0;
+    left: 50%;
 }
 
 #blue.control {
