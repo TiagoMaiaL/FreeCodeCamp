@@ -179,6 +179,10 @@ function Simon(sequence) {
    * @return SimonGame
    */
   this.start = function() {
+    if (gameSequence.count() > 0) {
+        this.resetGame();
+    }
+
     this.goNextRound();
     return this;
   }
