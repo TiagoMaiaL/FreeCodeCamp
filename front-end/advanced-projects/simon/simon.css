@@ -13,7 +13,7 @@ div.content {
 }
 
 div.controls {
-    background-color: gray;
+    background-color: white;
     width: 400px;
     height: 400px;
     margin: 0 auto;
@@ -41,24 +41,24 @@ div.controls div.control {
 
 #green.control {
     background-color: #28ED00;
-    top: 0%;
-    left: 0;
+    top: -2%;
+    left: -2%;
 }
 
 #yellow.control {
     background-color: #EAF200;
-    top: 50%;
-    left: 0%;
+    top: 52%;
+    left: -2%;
 }
 
 #red.control {
     background-color: #CC3300;
-    top: 0;
-    left: 50%;
+    top: -2%;
+    left: 52%;
 }
 
 #blue.control {
     background-color: #0099CC;
-    top: 50%;
-    left: 50%;
+    top: 52%;
+    left: 52%;
 }
