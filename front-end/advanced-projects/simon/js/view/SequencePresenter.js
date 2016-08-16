@@ -180,7 +180,7 @@ function SequencePresenter() {
    * @return void
    */
   var updateSequenceCounter = function(count) {
-    $('#sequence-counter').text(count);
+    $('#counter').text(count);
   }
 
   this.bindElements();

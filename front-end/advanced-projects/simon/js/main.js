@@ -92,14 +92,14 @@ $(document).ready(function() {
     /**
      * Click handler for the game control.
      */
-    $('#game-control').on('click', function() {
+    $('#start').on('click', function() {
       game.start();
     });
 
     /**
      * Click handler for the hard mode control.
      */
-    $('#hard-control').on('click', function() {
+    $('#hard').on('click', function() {
       var info = {hardMode : false};
       var isHardMode = $(this).attr('class') == 'active';
 

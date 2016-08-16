@@ -4,12 +4,12 @@
         <title>Simon Game</title>
         <link rel="stylesheet" type="text/css" href="simon.css">
         <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-        <script type="text/javascript" src="js/view/Sound.js"></script>
         <script type="text/javascript" src="js/logic/Color.js"></script>
         <script type="text/javascript" src="js/logic/Sequence.js"></script>
         <script type="text/javascript" src="js/logic/Player.js"></script>
         <script type="text/javascript" src="js/logic/InputHandler.js"></script>
         <script type="text/javascript" src="js/logic/Simon.js"></script>
+        <script type="text/javascript" src="js/view/Sound.js"></script>
         <script type="text/javascript" src="js/view/SequencePresenter.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
     </head>
@@ -17,9 +17,6 @@
         <div class="content">
             <header>
                 <h1>Simon Game</h1>
-                <button id="game-control">Start</button>
-                <button id="hard-control">Hard-mode</button>
-                <p id="sequence-counter">0</p>
             </header>
 
             <main>
@@ -28,6 +25,12 @@
                     <div id="yellow-control" class="control"></div>
                     <div id="green-control" class="control"></div>
                     <div id="blue-control" class="control"></div>
+
+                    <div id="settings">
+                        <button id="start">Start</button>
+                        <button id="hard">Hard-mode</button>
+                        <p id="counter">0</p>
+                    </div>
                 </div>
             </main>
 
