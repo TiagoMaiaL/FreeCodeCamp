@@ -46,7 +46,7 @@ function SequencePresenter() {
    * is being presented.
    * @type Boolean
    */
-  var isPresenting = false;
+  var isPresenting = true;
 
   /**
    * Checks if sequence is being presented.

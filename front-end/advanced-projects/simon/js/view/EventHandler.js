@@ -54,7 +54,10 @@ function EventHandler(inputHandler, gamePresenter, simonGame) {
    * @return void
    */
   var handleColorClick = function() {
-    // TODO: Check for presentation
+    if (presenter.isPresentingSequence()) {
+      return;
+    }
+    
     var colorName = $(this).attr('id');
     var info = {color : colorName}
 
