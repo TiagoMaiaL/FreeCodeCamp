@@ -21,10 +21,10 @@ function SequencePresenter() {
    * @type Object
    */
   var colorsHex = {
-    blue    : '#0099CC',
-    green   : '#28ED00',
-    yellow  : '#EAF200',
-    red     : '#CC3300',
+    blue    : 'rgba(0,153,204,0.6)',
+    green   : 'rgba(40, 237, 0, 0.6)',
+    yellow  : 'rgba(234, 242, 0, 0.6)',
+    red     : 'rgba(204,51,0,0.6)',
   }
 
   /**

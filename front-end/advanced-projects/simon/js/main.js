@@ -93,7 +93,14 @@ $(document).ready(function() {
      * Click handler for the game control.
      */
     $('#start').on('click', function() {
-      game.start();
+      if ($(this).attr('class').indexOf('fa-play')) {
+        $(this).attr('class', 'fa fa-repeat');
+        game.start();
+        return;
+      }
+
+      // TODO: Refactor this method name.
+      game.resetGame();      
     });
 
     /**

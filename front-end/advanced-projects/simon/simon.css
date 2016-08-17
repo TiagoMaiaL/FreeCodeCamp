@@ -1,10 +1,14 @@
 
+@import 'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300';
+
 body {
 
 }
 
 h1 {
     text-align: center;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 65px;
 }
 
 div.content {
@@ -22,6 +26,36 @@ div.controls {
     position: relative;
 }
 
+div.controls div.control {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+}
+
+#green.control {
+    background-color: rgba(40, 237, 0, 0.6);
+    top: -2%;
+    left: -2%;
+}
+
+#yellow.control {
+    background-color: rgba(234, 242, 0, 0.6);
+    top: 52%;
+    left: -2%;
+}
+
+#red.control {
+    background-color: rgba(204,51,0,0.6);
+    top: -2%;
+    left: 52%;
+}
+
+#blue.control {
+    background-color: rgba(0,153,204,0.6);
+    top: 52%;
+    left: 52%;
+}
+
 #settings {
     position: absolute;
     top: 27.5%;
@@ -31,34 +65,34 @@ div.controls {
     z-index: 100;
     background-color: white;
     border-radius: 50%;
+    text-align: center;
 }
 
-div.controls div.control {
-    width: 50%;
-    height: 50%;
+#settings i {
+    font-size: 25px;
+}
+
+#settings i:hover {
+    cursor: pointer;
+}
+
+#settings #start {
     position: absolute;
+    top: 48%;
+    left: 18%;
 }
 
-#green.control {
-    background-color: #28ED00;
-    top: -2%;
-    left: -2%;
+#settings #hard {
+    position: absolute;
+    top: 48%;
+    right: 18%;
 }
 
-#yellow.control {
-    background-color: #EAF200;
-    top: 52%;
-    left: -2%;
-}
-
-#red.control {
-    background-color: #CC3300;
-    top: -2%;
-    left: 52%;
-}
-
-#blue.control {
-    background-color: #0099CC;
-    top: 52%;
-    left: 52%;
+#settings #counter {
+    font-size: 60px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    margin-top: 54px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    width: 40%;
 }
