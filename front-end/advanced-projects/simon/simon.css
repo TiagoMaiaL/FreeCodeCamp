@@ -45,13 +45,13 @@ div.controls div.control {
 }
 
 #red.control {
-    background-color: rgba(204,51,0,0.6);
+    background-color: rgba(204, 51, 0, 0.6);
     top: -2%;
     left: 52%;
 }
 
 #blue.control {
-    background-color: rgba(0,153,204,0.6);
+    background-color: rgba(0, 153, 204, 0.6);
     top: 52%;
     left: 52%;
 }
@@ -70,6 +70,8 @@ div.controls div.control {
 
 #settings i {
     font-size: 25px;
+    position: absolute;
+    top: 48%;
 }
 
 #settings i:hover {
@@ -77,14 +79,10 @@ div.controls div.control {
 }
 
 #settings #start {
-    position: absolute;
-    top: 48%;
     left: 18%;
 }
 
 #settings #hard {
-    position: absolute;
-    top: 48%;
     right: 18%;
 }
 
