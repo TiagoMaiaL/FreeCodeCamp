@@ -54,40 +54,11 @@ function EventHandler(inputHandler, gamePresenter, simonGame) {
    * @return void
    */
   var handleColorClick = function() {
-    // TODO: Check fro presentation
+    // TODO: Check for presentation
+    var colorName = $(this).attr('id');
+    var info = {color : colorName}
 
-    var info = {color : $(this).attr('id')}
-    var colorName = null;
-    var rgbaColor = null;
-
-    // TODO: Refactor this.
-    switch($(this).attr('id')) {
-      case 'red':
-        colorName = 'red';
-        rgbaColor = 'rgba(204, 51, 0';
-        break;
-      case 'yellow':
-        colorName = 'yellow';
-        rgbaColor = 'rgba(234, 242, 0';
-        break;
-      case 'green':
-        colorName = 'green';
-        rgbaColor = 'rgba(40, 237, 0';
-        break;
-      case 'blue':
-        colorName = 'blue';
-        rgbaColor = 'rgba(0, 153, 204';
-    }
-
-    // TODO: This should be public a function.
-    (new Sound()).play(colorName);
-
-    $(this).animate({backgroundColor : rgbaColor + ', 1)'}, 100, "linear", function() {
-      $(this).animate({backgroundColor : rgbaColor + ', 0.6)'}, 100, "linear");
-    });
-    // --------------------------------------
-
-    info.color = colorName;
+    presenter.presentColor(colorName)
     input.receive(info);
   }
 

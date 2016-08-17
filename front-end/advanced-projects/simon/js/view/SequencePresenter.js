@@ -6,9 +6,6 @@
  * Simon game solution.
  * https://www.freecodecamp.com/challenges/build-a-simon-game
  */
-// TODO: download and present sounds.
-// TODO: Determine the hex of the colors for the selected controls.
-// TODO: Determine the hex of the colors for each control.
 
 /**
  * Object responsible for presenting the
@@ -20,7 +17,7 @@ function SequencePresenter() {
    * The Hex of the colors used by each control.
    * @type Object
    */
-  var colorsHex = {
+  var colorsRgba = {
     blue    : 'rgba(0,153,204,0.6)',
     green   : 'rgba(40, 237, 0, 0.6)',
     yellow  : 'rgba(234, 242, 0, 0.6)',
@@ -32,10 +29,10 @@ function SequencePresenter() {
    * @type {Object}
    */
   var controls = {
-    red     : null,
-    yellow  : null,
-    green   : null,
-    blue    : null
+    red     : $('#red'),
+    yellow  : $('#yellow'),
+    green   : $('#green'),
+    blue    : $('#blue')
   }
 
   /**
@@ -52,14 +49,11 @@ function SequencePresenter() {
   var isPresenting = false;
 
   /**
-   * Binds html elements for presentation.
-   * @return void
+   * Checks if sequence is being presented.
+   * @return Boolean
    */
-  this.bindElements = function() {
-    controls.red    = $('#red');
-    controls.yellow = $('#yellow');
-    controls.green  = $('#green');
-    controls.blue   = $('#blue');
+  this.isPresentingSequence = function() {
+    return isPresenting;
   }
 
   /**
@@ -73,28 +67,31 @@ function SequencePresenter() {
 
     isPresenting = true;
 
-    // TODO: present sequence.
-    // TODO: Set timeout interval.
     sequence.getItems().forEach(function(color, index, array) {
       var calculatedDelay = calculateDelay(array.length) * (index + 1);
       var pauseDelay = calculatedDelay + 400;
 
       setTimeout(function() {
-        presentColor(color, index, array);
-      }, calculatedDelay);
+        this.presentColor(color.getName());
+      }.bind(this), calculatedDelay);
 
       setTimeout(function() {
-        clearControls(index, array);
+        if (index + 1 == array.length)
+          isPresenting = false;
       }, pauseDelay);
-    });
+    }.bind(this));
   }
 
   /**
-   * Checks if sequence is being presented.
-   * @return Boolean
+   * presents a single color to the user.
+   * @param  String colorName
+   * @param  Integer index
+   * @param  Array array
+   * @return void
    */
-  this.isPresentingSequence = function() {
-    return isPresenting;
+  this.presentColor = function(colorName) {
+    sound.play(colorName);
+    animateColor(controls[colorName], colorsRgba[colorName]);
   }
 
   /**
@@ -103,56 +100,6 @@ function SequencePresenter() {
    */
   this.presentWinner = function() {
     console.log("winner");
-  }
-
-  /**
-   * presents a single color to the user.
-   * @param  Color color
-   * @param  Integer index
-   * @param  Array array
-   * @return void
-   */
-  var presentColor = function(color, index, array) {
-    switch(color.getName()) {
-      case 'red':
-        sound.play('red');
-        setControlColor(controls.red, 'gray');
-        break;
-      case 'yellow':
-        sound.play('yellow');
-        setControlColor(controls.yellow, 'gray');
-        break;
-      case 'green':
-        sound.play('green');
-        setControlColor(controls.green, 'gray');
-        break;
-      case 'blue':
-        sound.play('blue');
-        setControlColor(controls.blue, 'gray');
-        break;
-    }
-
-    if ((array.length - 1) == index) {
-      isPresenting = false;
-    }
-  }
-
-  /**
-   * Sets the initial colors for all the controls.
-   * @param Integer index
-   * @param Array array
-   * @return void
-   */
-  var clearControls = function(index, array) {
-    // TODO: Cancel any playing sound.
-  
-    setControlColor(controls.red, colorsHex.red);
-    setControlColor(controls.yellow, colorsHex.yellow);
-    setControlColor(controls.green, colorsHex.green);
-    setControlColor(controls.blue, colorsHex.blue);
-
-    if (index + 1 == array.length)
-      isPresenting = false;
   }
 
   /**
@@ -166,12 +113,18 @@ function SequencePresenter() {
   }
 
   /**
-   * Sets the color for the passed jquery element.
+   * Animates the color for the passed jquery element.
    * @param Object control
-   * @param String color
+   * @param String colorRgba
    */
-  var setControlColor = function(control, color) {
-    control.css('background-color', color);
+  var animateColor = function(control, colorRgba) {
+    colorRgba = colorRgba.split(',');
+    colorRgba.pop();
+    colorRgba = colorRgba.join(',');
+
+    control.animate({backgroundColor : colorRgba + ', 1)'}, 100, "linear",function() {
+      control.animate({backgroundColor : colorRgba + ', 0.6)'}, 100, "linear");
+    });
   }
 
   /**
@@ -182,6 +135,4 @@ function SequencePresenter() {
   var updateSequenceCounter = function(count) {
     $('#counter').text(count);
   }
-
-  this.bindElements();
 }
