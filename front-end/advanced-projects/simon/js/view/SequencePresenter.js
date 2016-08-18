@@ -96,10 +96,20 @@ function SequencePresenter() {
 
   /**
    * Presents the winner view to the player.
+   * @param Function finishCallback
    * @return void
    */
-  this.presentWinner = function() {
-    console.log("winner");
+  this.presentWinner = function(finishCallback) {
+    animateControls(colorsRgba.green, finishCallback);
+  }
+
+  /**
+   * Presents the loss animation.
+   * @param Function finishCallback
+   * @return void
+   */
+  this.presentLoss = function(finishCallback) {
+    animateControls(colorsRgba.red, finishCallback);
   }
 
   /**
@@ -122,9 +132,29 @@ function SequencePresenter() {
     colorRgba.pop();
     colorRgba = colorRgba.join(',');
 
-    control.animate({backgroundColor : colorRgba + ', 1)'}, 100, "linear",function() {
+    control.animate({backgroundColor : colorRgba + ', 1)'}, 100, "linear", function() {
       control.animate({backgroundColor : colorRgba + ', 0.6)'}, 100, "linear");
     });
+  }
+
+  /**
+   * Animates the colors of all controls.
+   * @param Function finishCallback
+   * @return void
+   */
+  var animateControls = function(colorRgba, finishCallback) {
+    $('.controls .control').animate(
+      {backgroundColor : colorRgba},
+      500,
+      "linear",
+      function() {
+        Object.keys(colorsRgba).forEach(function(key) {
+          controls[key].animate({backgroundColor : colorsRgba[key]}, 500);
+        });
+      }
+    );
+
+    setTimeout(finishCallback, 1000);
   }
 
   /**

@@ -191,9 +191,9 @@ function Simon(sequence) {
    * Resets the game color sequences.
    * @return Void
    */
+  // TODO: Refactor this method name.
   this.resetGame = function() {
     this.setSequence(new Sequence());
-    this.getPlayer().resetColors();
   }
 
   /**
@@ -232,8 +232,7 @@ function Simon(sequence) {
    * @return void
    */
   this.presentWinner = function() {
-    this.getPresenter().presentWinner();
-    this.resetGame();
+    this.getPresenter().presentWinner(this.start.bind(this));
   }
 
   /**
@@ -241,16 +240,14 @@ function Simon(sequence) {
    * @return void
    */
   this.presentLoss = function() {
-    // TODO: Present loss sounds
-    // TODO: Present loss animations.
+    this.getPresenter().presentLoss(function() {
+      if (this.getHardMode()) {
+        this.start();
+        return;
+      }
 
-    if (this.getHardMode()) {
-      this.resetGame();
-      this.goNextRound();
-      return;
-    }
-
-    this.presentRound();
+      this.presentRound();
+    }.bind(this));
   }
 
   /**

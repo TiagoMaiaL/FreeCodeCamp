@@ -72,12 +72,8 @@ function EventHandler(inputHandler, gamePresenter, simonGame) {
   var handleStartClick = function() {
     if ($(this).attr('class').indexOf('fa-play')) {
       $(this).attr('class', 'fa fa-repeat');
-      game.start();
-      return;
     }
-
-    // TODO: Refactor this method name.
-    game.resetGame();
+    game.start();
   }
 
   /**
