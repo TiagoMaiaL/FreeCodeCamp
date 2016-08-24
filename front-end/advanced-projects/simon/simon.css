@@ -30,6 +30,7 @@ div.controls div.control {
     width: 50%;
     height: 50%;
     position: absolute;
+    cursor: pointer;
 }
 
 #green.control {
@@ -72,9 +73,6 @@ div.controls div.control {
     font-size: 25px;
     position: absolute;
     top: 48%;
-}
-
-#settings i:hover {
     cursor: pointer;
 }
 

@@ -63,23 +63,23 @@ function SequencePresenter() {
    * @return void
    */
   this.present = function(sequence) {
-    updateSequenceCounter(sequence.count());
+    var self = this;
 
+    updateSequenceCounter(sequence.count());
     isPresenting = true;
 
     sequence.getItems().forEach(function(color, index, array) {
-      var calculatedDelay = calculateDelay(array.length) * (index + 1);
-      var pauseDelay = calculatedDelay + 400;
+
+      calculatedDelay = 400 * (index + 1);
 
       setTimeout(function() {
-        this.presentColor(color.getName());
-      }.bind(this), calculatedDelay);
+        self.presentColor(color.getName());
 
-      setTimeout(function() {
         if (index + 1 == array.length)
           isPresenting = false;
-      }, pauseDelay);
-    }.bind(this));
+      }, calculatedDelay);
+
+    });
   }
 
   /**
