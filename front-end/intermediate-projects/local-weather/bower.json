@@ -1,0 +1,17 @@
+{
+  "name": "local-weather",
+  "homepage": "https://github.com/TiagoMaiaL/FreeCodeCamp",
+  "authors": [
+    "Tiago Maia Lopes <tiago.maia@adjetiva.com.br>"
+  ],
+  "description": "FCC Intermediate project solition: https://www.freecodecamp.com/challenges/show-the-local-weather",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
