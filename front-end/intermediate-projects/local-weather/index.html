@@ -15,17 +15,19 @@
       <title>Current Weather</title>
       <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
       <link rel="stylesheet" type="text/css" href="assets/css/app.css">
-      
+
       <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
       <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
       <script type="text/javascript" src="bower_components/angular-resource/angular-resource.min.js"></script>
       <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
       <script type="text/javascript" src="app/app.module.js"></script>
+      <script type="text/javascript" src="app/components/home/HomeController.js"></script>
+      <script type="text/javascript" src="app/shared/services/WeatherService.js"></script>
     </head>
     <body>
       <div class="container-fluid">
         <div class="general">
-            <div class="overlay">
+            <div class="overlay" ng-controller="HomeController">
               <header>
                   <h1>How's the weather?</h1>
               </header>
