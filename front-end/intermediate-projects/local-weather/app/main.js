@@ -1,5 +1,11 @@
-
-// TODO: Use promises.
+/**
+ * Free Code Camp
+ *
+ * Intermediate Front-End Projects.
+ *
+ * Show The Local Weather solution.
+ * https://www.freecodecamp.com/challenges/show-the-local-weather
+ */
 
 var ImagesContainer = {
   clearSky : "http://www.dream-wallpaper.com/free-wallpaper/nature-wallpaper/clear-water-and-blue-sky-2-wallpaper/1920x1200/free-wallpaper-15.jpg",
