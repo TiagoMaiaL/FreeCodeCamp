@@ -6,7 +6,7 @@
 
 angular.module('WeatherApp')
 
-.service('GeoLocationService', [function() {
+.service('GeoLocationService', ['$rootScope', function($rootScope) {
 
   /**
    * Returns a boolean indicating whether
@@ -19,18 +19,20 @@ angular.module('WeatherApp')
 
   /**
    * Gets the user's browser coordinates.
-   * @param function callback
+   * @param function success
+   * @param function failure
    * @return null
    */
-  this.getCoordinates = function(callback) {
+  this.getCoordinates = function(success, failure) {
     if (!this.isAvailable()) {
-      callback(null, null);
+      failure();
       return;
     }
 
     navigator.geolocation.getCurrentPosition(function(position) {
-      callback(position.coords.latitude, position.coords.longitude);
-    });
+      success(position.coords.latitude, position.coords.longitude);
+      $rootScope.$apply();
+    }, failure);
   }
 
 }]);

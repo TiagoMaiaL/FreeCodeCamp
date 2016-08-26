@@ -14,22 +14,23 @@ angular.module('WeatherApp')
    * @type Resource
    */
   this.weatherApi = $resource(
-    'http://api.openweathermap.org/data/2.5/forecast',
-    {
-      callback: 'JSON_CALLBACK',
+    'http://api.openweathermap.org/data/2.5/forecast', {
       APPID: 'ced799b76a354f34b29a35705cccaf62'
-    },
-    {get: {method: 'JSON'}}
+    }
   );
 
   /**
    * Gets the weather at the given coordinate.
    * @param Float latitude
    * @param Float longitude
+   * @param Function responseCallback
    * @return Object
    */
-  this.getCoordinateWeather = function(latitude, longitude) {
-    return this.weatherApi.get({lat: latitude, lon: longitude});
+  this.getCoordinateWeather = function(latitude, longitude, responseCallback) {
+    return this.weatherApi.get(
+      {lat: latitude, lon: longitude},
+      responseCallback
+    );
   }
 
   /**
