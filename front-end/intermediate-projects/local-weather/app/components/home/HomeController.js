@@ -35,6 +35,6 @@ angular.module('WeatherApp')
     }, function() {
       // TODO: Present input to get city text.
     });
-    
+
   }
 ]);

@@ -22,6 +22,7 @@
       <script type="text/javascript" src="app/app.module.js"></script>
       <script type="text/javascript" src="app/shared/services/WeatherService.js"></script>
       <script type="text/javascript" src="app/shared/services/GeoLocationService.js"></script>
+      <script type="text/javascript" src="app/shared/filters/TemperatureFilter.js"></script>
       <script type="text/javascript" src="app/components/home/HomeController.js"></script>
     </head>
     <body>
@@ -31,7 +32,7 @@
               <header>
                   <h1>How's the weather?</h1>
               </header>
-              <p id="main">{{ weather.main.temp }} | {{ cityName }}</p>
+              <p id="main">{{ weather.main.temp | tempIn:'f'}} | {{ cityName }}</p>
               <div class="settings" class="row">
                 <button id="kelvin" class="col-md-4">Kelvin</button>
                 <button id="fahrenheit" class="col-md-4">Fahrenheit</button>
