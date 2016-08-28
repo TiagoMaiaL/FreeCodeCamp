@@ -32,11 +32,11 @@
               <header>
                   <h1>How's the weather?</h1>
               </header>
-              <p id="main">{{ weather.main.temp | tempIn:'f'}} | {{ cityName }}</p>
+              <p id="main">{{ weather.main.temp | tempIn:currentTemp}} | {{ cityName }}</p>
               <div class="settings" class="row">
-                <button id="kelvin" class="col-md-4">Kelvin</button>
-                <button id="fahrenheit" class="col-md-4">Fahrenheit</button>
-                <button id="celsius" class="col-md-4">Celsius</button>
+                <button id="kelvin" class="col-md-4" ng-click="currentTemp = 'k'">Kelvin</button>
+                <button id="fahrenheit" class="col-md-4" ng-click="currentTemp = 'f'">Fahrenheit</button>
+                <button id="celsius" class="col-md-4" ng-click="currentTemp = 'c'">Celsius</button>
               </div>
             </div>
           </div>

@@ -15,6 +15,11 @@ angular.module('WeatherApp')
   ) {
 
     /**
+     * Current temperature identifier.
+     */
+    $scope.currentTemp = 'k';
+
+    /**
      * Displays the weather using the scope.
      * @param  Object result
      * @return void
