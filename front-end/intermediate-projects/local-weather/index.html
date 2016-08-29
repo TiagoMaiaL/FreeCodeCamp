@@ -20,6 +20,7 @@
       <script type="text/javascript" src="bower_components/angular-resource/angular-resource.min.js"></script>
       <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
       <script type="text/javascript" src="app/app.module.js"></script>
+      <script type="text/javascript" src="app/shared/directives/TempControls.js"></script>
       <script type="text/javascript" src="app/shared/services/WeatherService.js"></script>
       <script type="text/javascript" src="app/shared/services/GeoLocationService.js"></script>
       <script type="text/javascript" src="app/shared/filters/TemperatureFilter.js"></script>
@@ -32,12 +33,8 @@
               <header>
                   <h1>How's the weather?</h1>
               </header>
-              <p id="main">{{ weather.main.temp | tempIn:currentTemp}} | {{ cityName }}</p>
-              <div class="settings" class="row">
-                <button id="kelvin" class="col-md-4" ng-click="currentTemp = 'k'">Kelvin</button>
-                <button id="fahrenheit" class="col-md-4" ng-click="currentTemp = 'f'">Fahrenheit</button>
-                <button id="celsius" class="col-md-4" ng-click="currentTemp = 'c'">Celsius</button>
-              </div>
+              <p id="main">{{ weather.main.temp | tempIn:temperatureUnit }} | {{ cityName }}</p>
+              <temperature-controls temperature-unit="currentTemp"></temperature-controls>
             </div>
           </div>
         </div>
