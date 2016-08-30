@@ -11,34 +11,35 @@
 
 <!DOCTYPE html>
 <html ng-app="WeatherApp">
-    <head>
-      <title>Current Weather</title>
-      <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-      <link rel="stylesheet" type="text/css" href="assets/css/app.css">
-      <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
-      <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
-      <script type="text/javascript" src="bower_components/angular-resource/angular-resource.min.js"></script>
-      <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
-      <script type="text/javascript" src="app/app.module.js"></script>
-      <script type="text/javascript" src="app/shared/directives/TempControls.js"></script>
-      <script type="text/javascript" src="app/shared/services/WeatherService.js"></script>
-      <script type="text/javascript" src="app/shared/services/GeoLocationService.js"></script>
-      <script type="text/javascript" src="app/shared/filters/TemperatureFilter.js"></script>
-      <script type="text/javascript" src="app/components/home/HomeController.js"></script>
-    </head>
-    <body>
-      <div class="container-fluid">
-        <div class="general">
-            <div class="overlay" ng-controller="HomeController">
-              <header>
-                  <h1>How's the weather?</h1>
-              </header>
-              <p id="main">{{ weather.main.temp | tempIn:temperatureUnit }} | {{ cityName }}</p>
-              <temperature-controls temperature-unit="currentTemp"></temperature-controls>
-            </div>
+  <head>
+    <title>Current Weather</title>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/app.css">
+    <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-resource/angular-resource.min.js"></script>
+    <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="app/app.module.js"></script>
+    <script type="text/javascript" src="app/shared/directives/TempControls.js"></script>
+    <script type="text/javascript" src="app/shared/services/WeatherService.js"></script>
+    <script type="text/javascript" src="app/shared/services/GeoLocationService.js"></script>
+    <script type="text/javascript" src="app/shared/filters/TemperatureFilter.js"></script>
+    <script type="text/javascript" src="app/components/home/HomeController.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="general">
+          <div class="overlay">
+            <header>
+              <h1>How's the weather?</h1>
+            </header>
+
+            <div ng-view></div>
+
+            <temperature-controls temperature-unit={{ temperatureUnit }}></temperature-controls>
           </div>
         </div>
       </div>
-    </body>
-    <script type="text/javascript">var json_callback = function() {}</script>
+    </div>
+  </body>
 </html>

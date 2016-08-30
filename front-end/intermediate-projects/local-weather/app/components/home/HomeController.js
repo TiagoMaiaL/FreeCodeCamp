@@ -6,18 +6,15 @@ angular.module('WeatherApp')
 
 .controller('HomeController', [
   '$scope',
+  '$rootScope',
   'WeatherService',
   'GeoLocationService',
   function(
     $scope,
+    $rootScope,
     weatherService,
     geoLocationService
   ) {
-
-    /**
-     * Default temperature identifier.
-     */
-    $scope.temperatureUnit = 'k';
 
     /**
      * Displays the weather using the scope.
