@@ -7,11 +7,13 @@ angular.module('WeatherApp')
 .controller('HomeController', [
   '$scope',
   '$rootScope',
+  '$location',
   'WeatherService',
   'GeoLocationService',
   function(
     $scope,
     $rootScope,
+    $location,
     weatherService,
     geoLocationService
   ) {
@@ -35,7 +37,7 @@ angular.module('WeatherApp')
         }
       );
     }, function() {
-      // TODO: Present input to get city text.
+      $location.path('/search');
     });
 
   }
