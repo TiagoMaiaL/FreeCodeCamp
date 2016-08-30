@@ -11,6 +11,18 @@ angular.module('WeatherApp')
     $scope,
     weatherService
   ) {
-    // TODO: Use ng submit to get the city info.
+    /**
+     * The search text typed by the user.
+     * @type String
+     */
+    $scope.placeText = '';
+
+    /**
+     * Searches the weather for a given place.
+     * @return void
+     */
+    $scope.searchPlaceWeather = function() {
+      // TODO: Make a request with the weather API.
+    }
   }
 ]);
