@@ -36,10 +36,11 @@ angular.module('WeatherApp')
   /**
    * Gets the weather at the given city.
    * @param  String cityName
+   * @param  Function responseCallback
    * @return Object
    */
-  this.getCityWeather = function(cityName) {
-    return this.weatherApi.get({q: cityName});
+  this.getCityWeather = function(cityName, responseCallback) {
+    return this.weatherApi.get({q: cityName}, responseCallback);
   }
 
 }]);

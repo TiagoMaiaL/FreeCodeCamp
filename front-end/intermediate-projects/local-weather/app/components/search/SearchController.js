@@ -12,6 +12,11 @@ angular.module('WeatherApp')
     weatherService
   ) {
     /**
+     * The sent request.
+     */
+    this.searchRequest = null;
+
+    /**
      * The search text typed by the user.
      * @type String
      */
@@ -22,7 +27,13 @@ angular.module('WeatherApp')
      * @return void
      */
     $scope.searchPlaceWeather = function() {
-      // TODO: Make a request with the weather API.
+      this.searchRequest = weatherService.getCityWeather($scope.placeText,
+        function(result) {
+          // TODO: Display the results.
+        }
+      );
     }
+
   }
+
 ]);
