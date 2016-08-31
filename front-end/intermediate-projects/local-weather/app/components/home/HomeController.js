@@ -18,24 +18,25 @@ angular.module('WeatherApp')
     geoLocationService
   ) {
     /**
-     * The sent request.
-     */
-    this.searchRequest = null;
-
-    /**
      * The search text typed by the user.
      * @type String
      */
     $scope.placeText = '';
 
     /**
+     * The sent request.
+     */
+    var searchRequest = null;
+
+    /**
      * Searches the weather for a given place.
      * @return void
      */
     $scope.searchPlaceWeather = function() {
-      this.searchRequest = weatherService.getCityWeather($scope.placeText,
+      searchRequest = weatherService.getCityWeather($scope.placeText,
         function(result) {
-          // TODO: Display the results.
+          displayWeather(result);
+          $scope.searchRequest = null;
         }
       );
     }
@@ -51,15 +52,13 @@ angular.module('WeatherApp')
     }
 
     geoLocationService.getCoordinates(function(latitude, longitude) {
-      weatherService.getCoordinateWeather(
+      searchRequest = weatherService.getCoordinateWeather(
         latitude,
         longitude,
         function(result) {
           displayWeather(result);
         }
       );
-    }, function() {
-      $location.path('/search');
     });
 
   }
