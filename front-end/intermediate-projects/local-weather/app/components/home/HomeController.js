@@ -25,7 +25,7 @@ angular.module('WeatherApp')
      */
     var displayWeather = function(result) {
       $scope.weather = result.list[0];
-      $scope.cityName = result.city.name;
+      $scope.city = result.city;
     }
 
     geoLocationService.getCoordinates(function(latitude, longitude) {
