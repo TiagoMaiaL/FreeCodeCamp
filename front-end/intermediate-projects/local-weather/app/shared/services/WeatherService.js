@@ -14,7 +14,7 @@ angular.module('WeatherApp')
    * @type Resource
    */
   this.weatherApi = $resource(
-    'http://api.openweathermap.org/data/2.5/forecast', {
+    'http://api.openweathermap.org/data/2.5/weather', {
       APPID: 'ced799b76a354f34b29a35705cccaf62'
     }
   );
