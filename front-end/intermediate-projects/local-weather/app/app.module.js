@@ -15,10 +15,6 @@ angular.module('WeatherApp', ['ngRoute', 'ngResource'])
       templateUrl: 'app/components/home/HomeView.html',
       controller: 'HomeController'
     })
-    .when('/search', {
-      templateUrl: 'app/components/search/SearchView.html',
-      controller: 'SearchController'
-    });
 }])
 
 .run(['$rootScope', function($rootScope) {
