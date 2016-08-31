@@ -13,9 +13,11 @@ angular.module('WeatherApp')
    * Resource object.
    * @type Resource
    */
-  this.weatherApi = $resource(
+  this.api = $resource(
     'http://api.openweathermap.org/data/2.5/weather', {
       APPID: 'ced799b76a354f34b29a35705cccaf62'
+    }, {
+      getCityWeather: {method: 'get', cancellable: true}
     }
   );
 
@@ -27,7 +29,7 @@ angular.module('WeatherApp')
    * @return Object
    */
   this.getCoordinateWeather = function(latitude, longitude, responseCallback) {
-    return this.weatherApi.get(
+    return this.api.getCityWeather(
       {lat: latitude, lon: longitude},
       responseCallback
     );
@@ -40,7 +42,7 @@ angular.module('WeatherApp')
    * @return Object
    */
   this.getCityWeather = function(cityName, responseCallback) {
-    return this.weatherApi.get({q: cityName}, responseCallback);
+    return this.api.getCityWeather({q: cityName}, responseCallback);
   }
 
 }]);
