@@ -1,4 +1,6 @@
-<p id="main">{{ weather.temp | tempIn:temperatureUnit }} | {{ cityName }}</p>
+<p id="weather">{{ weather.temp | tempIn:temperatureUnit }} | {{ description }}</p>
+
+<p id="date">{{ cityName }}. {{ weather.date | date:'MMM d' }}</p>
 
 <form ng-submit="searchPlaceWeather()">
   <input type="text" ng-model="placeText">

@@ -67,7 +67,7 @@ h1 {
 }
 
 p {
-  font-size: 30px;
+  font-size: 20px;
 }
 
 button {
@@ -84,3 +84,9 @@ div.general div div.row {
 #temp {
   font-size: 45px;
 }
+
+p#weather {
+  font-size: 35px;
+}
+
+
