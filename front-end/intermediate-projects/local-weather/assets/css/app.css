@@ -39,6 +39,11 @@ div.general {
   margin-top: 50px;
 }
 
+div.content {
+  margin: 0 auto;
+  width: 60%;
+}
+
 div.overlay {
   position:absolute;
   top:0;
@@ -59,7 +64,7 @@ div.settings {
 
 header {
   margin-top: 50px;
-  margin-bottom: 100px;
+  margin-bottom: 60px;
 }
 
 h1 {
@@ -86,5 +91,30 @@ div.general div div.row {
 }
 
 p#weather {
+  margin-bottom: 10px;
   font-size: 35px;
+}
+
+form {
+  margin: 0 auto;
+  margin-top: 40px;
+  background-color: rgba(255, 255, 255, 0.1);
+  width: 40%;
+  padding: 4px;
+  border-radius: 30px;
+}
+
+input {
+  background-color: transparent;
+  color: white;
+  border: none;
+}
+
+input[type="text"] {
+  width: 85%;
+}
+
+form button {
+  float:right;
+  margin-right: 6px;
 }

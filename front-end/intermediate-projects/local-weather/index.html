@@ -15,6 +15,7 @@
     <title>Current Weather</title>
     <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/app.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
     <script type="text/javascript" src="bower_components/angular-resource/angular-resource.min.js"></script>
@@ -31,13 +32,15 @@
     <div class="container-fluid">
       <div class="general">
           <div class="overlay">
-            <header>
-              <h1>How's the weather?</h1>
-            </header>
+            <div class="content">
+              <header>
+                <h1>How's the weather?</h1>
+              </header>
 
-            <div ng-view></div>
+              <div ng-view></div>
 
-            <temperature-controls temperature-unit={{ temperatureUnit }}></temperature-controls>
+              <temperature-controls temperature-unit={{ temperatureUnit }}></temperature-controls>
+            </div>
           </div>
         </div>
       </div>
