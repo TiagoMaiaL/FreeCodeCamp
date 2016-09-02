@@ -30,6 +30,13 @@ div.home {
   opacity: 0;
 }
 
+div.loading {
+  margin: 0 auto;
+  position: absolute;
+  top: 28%;
+  left: 43%;
+}
+
 div.active {
   animation: active 0.4s ease-in-out forwards;
 }
