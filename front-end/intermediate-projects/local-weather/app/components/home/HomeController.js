@@ -33,6 +33,9 @@ angular.module('WeatherApp')
      * @return void
      */
     $scope.searchPlaceWeather = function() {
+      if ($scope.placeText.length == 0)
+        return;
+
       searchRequest = weatherService.getCityWeather($scope.placeText,
         function(result) {
           displayWeather(result);
