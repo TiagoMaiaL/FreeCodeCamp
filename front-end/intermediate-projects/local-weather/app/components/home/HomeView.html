@@ -1,4 +1,4 @@
-<div ng-show="weather != null">
+<div class="home" ng-class="weather != null ? 'active' : 'inactive'">
   <p id="weather">{{ weather.temp | tempIn:temperatureUnit }} | {{ description }}</p>
 
   <p id="date">{{ cityName }}. {{ weather.date | date:'MMM d' }}</p>
