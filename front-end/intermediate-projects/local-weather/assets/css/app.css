@@ -26,6 +26,10 @@
   }
 }
 
+div.container-fluid {
+  background-image: url(http://www.dream-wallpaper.com/free-wallpaper/nature-wallpaper/clear-water-and-blue-sky-2-wallpaper/1920x1200/free-wallpaper-15.jpg);
+}
+
 div.home {
   opacity: 0;
   position: relative;
