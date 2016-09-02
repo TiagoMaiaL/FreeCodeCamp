@@ -26,19 +26,22 @@ angular.module('WeatherApp')
   }
 
   return function(temperature, unit) {
-    var converted = null;
+    if (!temperature)
+      temperature = 0;
+
+    var converted = temperature;
 
     switch(unit) {
       case 'c':
         converted = toCelsius(temperature);
+        converted = converted.toFixed(0);
         break;
 
       case 'f':
         converted = toFahrenheit(temperature);
-        break;
 
       default:
-        converted = temperature;
+        converted = converted.toFixed(2);
     }
 
     return converted;
