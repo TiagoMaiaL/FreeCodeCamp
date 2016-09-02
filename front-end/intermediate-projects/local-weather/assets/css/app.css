@@ -140,6 +140,10 @@ div.settings button:after {
   transition: width 0.2s;
 }
 
+div.settings button.selected:after {
+  width: 100%;
+}
+
 div.settings button:hover:after {
   width: 100%;
 }
