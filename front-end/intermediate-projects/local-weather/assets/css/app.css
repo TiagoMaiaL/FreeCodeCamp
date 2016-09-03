@@ -26,8 +26,8 @@
   }
 }
 
-div.container-fluid {
-  background-image: url(http://www.dream-wallpaper.com/free-wallpaper/nature-wallpaper/clear-water-and-blue-sky-2-wallpaper/1920x1200/free-wallpaper-15.jpg);
+*:focus {
+  outline: 0;
 }
 
 div.home {
@@ -68,33 +68,64 @@ body {
 }
 
 div.container-fluid {
-  background-position: bottom center;
-  background-size: cover;
-  background-repeat: repeat-y;
   height: 100%;
   width: 100%;
 }
 
 div.general {
-  max-width: 600px;
   margin: 0 auto;
   margin-top: 50px;
 }
 
 div.content {
+  /*position: relative;*/
   margin: 0 auto;
   width: 60%;
+  color: white;
+  z-index: 9999;
 }
 
-div.overlay {
+div.blur-container {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: -2000;
+  overflow: hidden;
+}
+
+div.blur {
+  -webkit-filter: blur(8px);
+  -moz-filter: blur(8px);
+  -o-filter: blur(8px);
+  -ms-filter: blur(8px);
+  filter: blur(15px);
+
+  background-position: bottom center;
+  background-size: cover;
+  background-repeat: repeat-y;
+  background-image: url(http://www.dream-wallpaper.com/free-wallpaper/nature-wallpaper/clear-water-and-blue-sky-2-wallpaper/1920x1200/free-wallpaper-15.jpg);
+
   position:absolute;
   top:0;
   left:0;
   right:0;
   bottom:0;
-  background-color:rgba(0, 0, 0, 0.4);
-  background: z-index:9999;
-  color:white;
+
+  transform: scale(1.09);
+}
+
+div.overlay {
+  background: rgba(0, 0, 0, 0.4);
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:-1000;
 }
 
 div.settings {
@@ -174,6 +205,7 @@ input {
   background-color: transparent;
   color: white;
   border: none;
+  padding-left: 8px;
 }
 
 input[type="text"] {

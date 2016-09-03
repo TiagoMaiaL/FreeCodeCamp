@@ -33,16 +33,17 @@
   <body>
     <div class="container-fluid">
       <div class="general">
-          <div class="overlay">
-            <div class="content">
-              <header>
-                <h1>How's the weather?</h1>
-              </header>
+          <div class="blur-container"><div class="blur"></div></div>
+          
+          <div class="overlay"></div>
+          <div class="content">
+            <header>
+              <h1>How's the weather?</h1>
+            </header>
 
-              <div ng-view></div>
+            <div ng-view></div>
 
-              <temperature-controls temperature-unit={{ temperatureUnit }}></temperature-controls>
-            </div>
+            <temperature-controls temperature-unit={{ temperatureUnit }}></temperature-controls>
           </div>
         </div>
       </div>
