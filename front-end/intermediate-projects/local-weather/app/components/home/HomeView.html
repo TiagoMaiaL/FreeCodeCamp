@@ -1,7 +1,14 @@
-<div class="home" ng-class="weather != null ? 'active' : 'inactive'">
-  <p id="weather">{{ weather.temp | tempIn:temperatureUnit }} | {{ description }}</p>
+<div class="home" ng-class="weather != null || errorMessage != null ? 'active' : 'inactive'">
 
-  <p id="date">{{ cityName }}. {{ weather.date | date:'MMM d' }}</p>
+  <div ng-show="errorMessage == null">
+    <p id="weather">{{ weather.temp | tempIn:temperatureUnit }} | {{ description }}</p>
+    <p id="date">{{ cityName }}. {{ weather.date | date:'MMM d' }}</p>
+  </div>
+
+  <div ng-show="errorMessage != null">
+    <p>{{ errorMessage }}</p>
+    <p>{{ errorSuggest }}</p>
+  </div>
 
   <form ng-submit="searchPlaceWeather()">
     <input type="text" ng-model="placeText">
@@ -9,6 +16,8 @@
       <i class="fa fa-search" aria-hidden="true"></i>
     </button>
   </form>
+
+  <load-indicator loading="{{ isSearching == true }}"></load-indicator>
 </div>
 
-<load-indicator loading="{{weather == null}}"></load-indicator>
+<load-indicator loading="{{ weather == null && errorMessage == null }}"></load-indicator>

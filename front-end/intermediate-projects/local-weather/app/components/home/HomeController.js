@@ -29,6 +29,12 @@ angular.module('WeatherApp')
     var searchRequest = null;
 
     /**
+     * Flag indicating if the search request was sent.
+     * @type Boolean
+     */
+    this.isSearching = false;
+
+    /**
      * Searches the weather for a given place.
      * @return void
      */
@@ -36,10 +42,13 @@ angular.module('WeatherApp')
       if ($scope.placeText.length == 0)
         return;
 
+      $scope.isSearching = true;
+
       searchRequest = weatherService.getCityWeather($scope.placeText,
         function(result) {
-          displayWeather(result);
+          $scope.isSearching = false;
           $scope.searchRequest = null;
+          displayWeather(result);
         }
       );
     }
@@ -56,16 +65,45 @@ angular.module('WeatherApp')
       $scope.description = result.weather[0].main;
     }
 
+    /**
+     * Displays the error returned while getting weather.
+     * @param  Object result
+     * @return void
+     */
+    var displayError = function(result) {
+      $scope.cityName = null;
+      $scope.weather = null;
+      $scope.description = null;
+
+      if (result.cod == 404) {
+        $scope.errorMessage = "City not found";
+      }
+
+      if (result.cod != 404) {
+        $scope.errorMessage = "An error occurred";
+      }
+
+      $scope.errorSuggest = 'Please, search for another city';
+    }
+
+    this.isSearching = true;
     geoLocationService.getCoordinates(function(latitude, longitude) {
       searchRequest = weatherService.getCoordinateWeather(
         latitude,
         longitude,
         function(result) {
-          console.log(result);
-          displayWeather(result);
-        }
+          $scope.isSearching = false;
+
+          if (result.cod == 200) {
+            displayWeather(result);
+            return;
+          }
+          if (result.cod != 200) {
+            displayError(result);
+            return;
+          }
+        }.bind(this)
       );
     });
-
   }
 ]);
