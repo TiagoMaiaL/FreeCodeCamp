@@ -1,13 +1,17 @@
-<div class="home" ng-class="weather != null || errorMessage != null ? 'active' : 'inactive'">
+<div class="home" ng-class="hasWeather || hasError || hasLocationForbidden ? 'active' : 'inactive'">
 
-  <div ng-show="errorMessage == null">
+  <div ng-show="hasWeather">
     <p id="weather">{{ weather.temp | tempIn:temperatureUnit }} | {{ description }}</p>
     <p id="date">{{ cityName }}. {{ weather.date | date:'MMM d' }}</p>
   </div>
 
-  <div ng-show="errorMessage != null">
+  <div ng-show="hasError">
     <p>{{ errorMessage }}</p>
     <p>{{ errorSuggest }}</p>
+  </div>
+
+  <div ng-show="hasLocationForbidden">
+    <p>Please, search for a city's weather</p>
   </div>
 
   <form ng-submit="searchPlaceWeather()">
@@ -17,7 +21,8 @@
     </button>
   </form>
 
-  <load-indicator loading="{{ isSearching == true }}"></load-indicator>
+  <!-- <load-indicator loading="{{ isSearching == true }}"></load-indicator> -->
 </div>
 
-<load-indicator loading="{{ weather == null && errorMessage == null }}"></load-indicator>
+<load-indicator loading="{{ !hasWeather && !hasError && !hasLocationForbidden }}">
+</load-indicator>

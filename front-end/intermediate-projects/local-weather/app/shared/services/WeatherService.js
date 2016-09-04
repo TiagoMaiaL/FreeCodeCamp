@@ -10,6 +10,13 @@ angular.module('WeatherApp')
 .service('WeatherService', ['$resource', function($resource) {
 
   /**
+   * Callback used to return api calls while
+   * starting and ending the request.
+   */
+  // TODO: Refactor the name of this function.
+  this.isSearchingCallback = function(){};
+
+  /**
    * Resource object.
    * @type Resource
    */
@@ -22,17 +29,33 @@ angular.module('WeatherApp')
   );
 
   /**
+   * Abstracts the calls to the weather api.
+   * @param  Object params
+   * @param  Function responseCallback
+   * @return Object
+   */
+  this.getWeather = function(params, responseCallback) {
+    var call = this.api.getCityWeather(
+      params,
+      function(result) {
+        this.isSearchingCallback(null, false);
+        responseCallback(result);
+      }.bind(this)
+    );
+    this.isSearchingCallback(call, true);
+
+    return call;
+  }
+
+  /**
    * Gets the weather at the given coordinate.
    * @param Float latitude
    * @param Float longitude
    * @param Function responseCallback
    * @return Object
    */
-  this.getCoordinateWeather = function(latitude, longitude, responseCallback) {
-    return this.api.getCityWeather(
-      {lat: latitude, lon: longitude},
-      responseCallback
-    );
+  this.searchCoordinateWeather = function(latitude, longitude, responseCallback) {
+    return this.getWeather({lat: latitude, lon: longitude}, responseCallback);
   }
 
   /**
@@ -41,8 +64,8 @@ angular.module('WeatherApp')
    * @param  Function responseCallback
    * @return Object
    */
-  this.getCityWeather = function(cityName, responseCallback) {
-    return this.api.getCityWeather({q: cityName}, responseCallback);
+  this.searchCityWeather = function(cityName, responseCallback) {
+    return this.getWeather({q: cityName}, responseCallback);
   }
 
 }]);

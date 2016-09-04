@@ -32,7 +32,10 @@ angular.module('WeatherApp')
     navigator.geolocation.getCurrentPosition(function(position) {
       success(position.coords.latitude, position.coords.longitude);
       $rootScope.$apply();
-    }, failure);
+    }, function() {
+      failure();
+      $rootScope.$apply();
+    });
   }
 
 }]);

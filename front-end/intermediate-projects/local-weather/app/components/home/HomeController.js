@@ -35,6 +35,12 @@ angular.module('WeatherApp')
     $scope.isSearching = false;
 
     /**
+     * Flag indicating if the geo location service was allowed.
+     * @type Boolean
+     */
+    $scope.hasLocation = true;
+
+    /**
      * Searches the weather for a given place.
      * @return void
      */
@@ -44,10 +50,16 @@ angular.module('WeatherApp')
 
       $scope.isSearching = true;
 
-      searchRequest = weatherService.getCityWeather($scope.placeText,
+      searchRequest = weatherService.searchCityWeather($scope.placeText,
         function(result) {
           $scope.isSearching = false;
           $scope.searchRequest = null;
+
+          if (result.cod != 200) {
+            $scope.weather = null;
+            displayError(result);
+          }
+
           displayWeather(result);
         }
       );
@@ -86,9 +98,9 @@ angular.module('WeatherApp')
       $scope.errorSuggest = 'Please, search for another city';
     }
 
-    this.isSearching = true;
+    $scope.isSearching = true;
     geoLocationService.getCoordinates(function(latitude, longitude) {
-      searchRequest = weatherService.getCoordinateWeather(
+      searchRequest = weatherService.searchCoordinateWeather(
         latitude,
         longitude,
         function(result) {
@@ -99,11 +111,15 @@ angular.module('WeatherApp')
             return;
           }
           if (result.cod != 200) {
+            $scope.weather = null;
             displayError(result);
             return;
           }
-        }.bind(this)
+        }
       );
+    }, function() {
+      $scope.hasLocation = false;
+      $scope.$apply();
     });
   }
 ]);
