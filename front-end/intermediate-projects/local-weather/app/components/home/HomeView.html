@@ -10,7 +10,7 @@
     <p>{{ errorSuggest }}</p>
   </div>
 
-  <div ng-show="hasLocationForbidden">
+  <div ng-show="hasLocationForbidden && !hasError && !hasWeather">
     <p>Please, search for a city's weather</p>
   </div>
 

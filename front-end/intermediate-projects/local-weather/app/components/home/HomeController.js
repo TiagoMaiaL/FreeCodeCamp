@@ -24,6 +24,12 @@ angular.module('WeatherApp')
     $scope.placeText = '';
 
     /**
+     * Flag indicating if geoLocator api is allowed.
+     * @type Boolean
+     */
+    $scope.hasLocationForbidden = true;
+
+    /**
      * The sent request.
      */
     var searchRequest = null;
@@ -105,7 +111,7 @@ angular.module('WeatherApp')
         }
       );
     }, function() {
-      $scope.hasLocation = false;
+      $scope.hasLocationForbidden = true;
     });
   }
 ]);
