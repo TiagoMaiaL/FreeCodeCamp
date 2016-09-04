@@ -32,7 +32,7 @@ angular.module('WeatherApp')
      * Flag indicating if the search request was sent.
      * @type Boolean
      */
-    this.isSearching = false;
+    $scope.isSearching = false;
 
     /**
      * Searches the weather for a given place.
