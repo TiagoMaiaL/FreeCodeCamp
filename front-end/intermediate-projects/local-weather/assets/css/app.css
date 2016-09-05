@@ -36,11 +36,32 @@ div.home {
   z-index: 1;
 }
 
+#search-indicator {
+  opacity: 0;
+  position: static;
+  width: 80px;
+  margin: 0 auto;
+  margin-top: 5px
+}
+
+#search-indicator .uil-ring-css {
+  width: 70px;
+  height: 70px;
+}
+
+#search-indicator .uil-ring-css > div {
+  width: 70px;
+  height: 70px;
+  top: 5px;
+  left: 5px;
+}
+
 div.loading {
   margin: 0 auto;
   position: absolute;
   top: 28%;
   left: 43%;
+  z-index: -1;
 }
 
 div.active {
