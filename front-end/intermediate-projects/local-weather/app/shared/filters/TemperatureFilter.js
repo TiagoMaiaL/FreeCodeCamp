@@ -25,6 +25,29 @@ angular.module('WeatherApp')
     return Math.ceil(temperature - 273.15) * 1.8000 + 32;
   }
 
+  /**
+   * Returns the unit text.
+   * @param  String unit
+   * @return String
+   */
+  var getUnitText = function(unit) {
+    var text = null;
+
+    switch(unit) {
+      case 'c':
+        text = '°C';
+        break;
+      case 'f':
+        text = '°F';
+        break;
+      case 'k':
+        text = "K";
+        break;
+    }
+
+    return text;
+  }
+
   return function(temperature, unit) {
     if (!temperature)
       temperature = 0;
@@ -44,7 +67,7 @@ angular.module('WeatherApp')
         converted = converted.toFixed(2);
     }
 
-    return converted;
+    return converted.toString() + ' ' + getUnitText(unit);
   }
 }]);
 
