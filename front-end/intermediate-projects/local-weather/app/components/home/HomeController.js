@@ -35,6 +35,25 @@ angular.module('WeatherApp')
     var searchRequest = null;
 
     /**
+     * The possible weather types listed by the API
+     * and it's corresponding font.
+     * @type Object
+     */
+    var weatherTypes = {
+      clear             : 'wi-day-sunny',
+      clouds            : 'wi-day-cloudy',
+      few_clouds        : 'wi-day-cloudy',
+      scattered_clouds  : 'wi-day-cloudy',
+      broken_clouds     : 'wi-day-cloudy',
+      drizzle           : 'wi-day-rain',
+      rain              : 'wi-day-rain',
+      thunderstorm      : 'wi-day-thunderstorm',
+      snow              : 'wi-day-snow',
+      mist              : 'wi-day-haze',
+      fog               : 'wi-day-fog'
+    }
+
+    /**
      * Searches the weather for a given place.
      * @return void
      */
@@ -61,6 +80,7 @@ angular.module('WeatherApp')
      * @return void
      */
     var displayWeather = function(result) {
+      console.log(result);
       $scope.hasWeather = true;
       $scope.hasErrors = false;
 
@@ -68,6 +88,9 @@ angular.module('WeatherApp')
       $scope.weather = result.main;
       $scope.weather.date = new Date(result.dt * 1000);
       $scope.description = result.weather[0].main;
+      $scope.icon = weatherTypes[
+        $scope.description.split(' ').join('_').toLowerCase()
+      ];
     }
 
     /**
