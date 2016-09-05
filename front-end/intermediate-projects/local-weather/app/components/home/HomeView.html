@@ -1,6 +1,7 @@
 <div class="home" ng-class="hasWeather || hasError || hasLocationForbidden ? 'active' : 'inactive'">
 
   <div ng-show="hasWeather">
+    <p><i class="wi wi-day-sleet"></i></p>
     <p id="weather">{{ weather.temp | tempIn:temperatureUnit }} | {{ description }}</p>
     <p id="date">{{ cityName }}. {{ weather.date | date:'MMM d' }}</p>
   </div>
