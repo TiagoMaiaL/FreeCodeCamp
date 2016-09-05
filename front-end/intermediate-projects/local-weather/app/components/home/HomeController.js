@@ -94,6 +94,14 @@ angular.module('WeatherApp')
       $scope.errorSuggest = 'Please, search for another city';
     }
 
+    /**
+     * Function called when an api call is being made of finished.
+     * @return void
+     */
+    weatherService.isSearchingCallback = function(request, isSearching) {
+      $scope.isSearching = isSearching;
+    }.bind(this);
+
     geoLocationService.getCoordinates(function(latitude, longitude) {
       searchRequest = weatherService.searchCoordinateWeather(
         latitude,
