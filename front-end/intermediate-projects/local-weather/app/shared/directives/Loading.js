@@ -8,6 +8,7 @@ angular.module('WeatherApp')
   return {
     templateUrl: 'app/shared/directives/LoadingTemplate.html',
     restrict: 'E',
+    replace: true,
     scope: {
       loading: '@'
     }
