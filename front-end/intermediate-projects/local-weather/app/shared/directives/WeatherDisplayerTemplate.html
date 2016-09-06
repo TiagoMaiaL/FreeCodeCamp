@@ -1,0 +1,5 @@
+<div ng-show="hasWeather">
+  <p><i class="wi {{ icon }}"></i></p>
+  <p id="weather">{{ weather.temp | tempIn:temperatureUnit }} | {{ description }}</p>
+  <p id="date">{{ cityName }}. {{ weather.date | date:'MMM d' }}</p>
+</div>
